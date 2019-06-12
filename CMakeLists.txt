@@ -12,3 +12,10 @@ include_directories (/usr/include/opencascade /usr/include/occt /usr/include/fre
 add_library(occutil SHARED
     src/SurfaceUtils.cxx
 )
+
+export (
+  TARGETS 
+    occutil
+  FILE
+    occutil.cmake
+)
