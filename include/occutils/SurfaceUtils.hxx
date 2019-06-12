@@ -1,4 +1,7 @@
 #pragma once
+/**
+ * Utilities for analyzing surfaces
+ */
 #include <TopoDS_Shape.hxx>
 #include <TopoDS_Face.hxx>
 #include <GeomAdaptor_Surface.hxx>
