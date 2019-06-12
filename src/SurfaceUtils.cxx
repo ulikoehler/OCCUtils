@@ -1,4 +1,4 @@
-#include "FaceUtils.hxx"
+#include "SurfaceUtils.hxx"
 #include <GProp_GProps.hxx>
 #include <BRepGProp.hxx>
 
