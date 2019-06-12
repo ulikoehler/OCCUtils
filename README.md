@@ -1,5 +1,5 @@
 # OCCUtils
-OpenCASCADE utility library - algorithms and convenience functions.
+[OpenCASCADE](https://opencascade.com) utility library - algorithms and convenience functions.
 
 ### Prerequisites
 
@@ -69,4 +69,6 @@ replacing `my_target` with the name of your build target (i.e. the first argumen
 
 ## How to use
 
-TODO
+On my [blog](https://techoverflow.net) I provide examples of specific usecases for OpenCASCADE, including how to use the relevant OCCUtils functions:
+
+* [How to compute surface area of TopoDS_Face in OpenCASCADE](https://techoverflow.net/2019/06/13/how-to-compute-surface-area-of-topods_face-in-opencascade/)
