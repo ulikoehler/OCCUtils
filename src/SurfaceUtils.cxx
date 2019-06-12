@@ -1,4 +1,4 @@
-#include "SurfaceUtils.hxx"
+#include "occutils/SurfaceUtils.hxx"
 #include <GProp_GProps.hxx>
 #include <BRepGProp.hxx>
 #include <BRepLib_FindSurface.hxx>
