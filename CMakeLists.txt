@@ -25,7 +25,12 @@ target_include_directories(occutils PUBLIC "${CMAKE_CURRENT_LIST_DIR}/include")
 target_compile_options(occutils PRIVATE -Werror)
 target_compile_features(occutils PRIVATE cxx_std_17)
 
-install(TARGETS occutils DESTINATION lib)
+install(TARGETS occutils
+  LIBRARY DESTINATION lib
+  PUBLIC_HEADER DESTINATION include)
+install(DIRECTORY
+  "${CMAKE_CURRENT_LIST_DIR}/include/"
+  DESTINATION include)
 #export (
 #  TARGETS 
 #    occutils
