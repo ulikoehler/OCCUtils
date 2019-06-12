@@ -4,7 +4,7 @@
 #include <GeomAdaptor_Surface.hxx>
 #include <optional>
 
-namespace OCCUtil {
+namespace OCCUtils {
     namespace SurfaceUtils {
         /**
          * Get the total surface area of a face, solid etc.

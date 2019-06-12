@@ -5,13 +5,13 @@
 
 using namespace std;
 
-double SurfaceArea(const TopoDS_Shape& face) {
+double OCCUtils::SurfaceUtils::SurfaceArea(const TopoDS_Shape& face) {
     GProp_GProps gprops;
     BRepGProp::SurfaceProperties(face, gprops);
     return gprops.Mass();
 }
 
-std::optional<GeomAdaptor_Surface> SurfaceFromFace(const TopoDS_Face& face) {
+std::optional<GeomAdaptor_Surface> OCCUtils::SurfaceUtils::SurfaceFromFace(const TopoDS_Face& face) {
     BRepLib_FindSurface bfs(face);
     if (!bfs.Found()) {
         return std::nullopt;

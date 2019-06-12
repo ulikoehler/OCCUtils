@@ -18,10 +18,10 @@ add_library(occutils SHARED
 set_target_properties(occutils
   PROPERTIES
   INTERFACE_INCLUDE_DIRECTORIES "${CMAKE_CURRENT_LIST_DIR}/include"
-  INTERFACE_LINK_LIBRARIES "${CMAKE_CURRENT_LIST_DIR}/liboccutils.so"
+  INTERFACE_LINK_LIBRARIES "occutils"
 )
 
-target_include_directories(occutils PRIVATE "${CMAKE_CURRENT_LIST_DIR}/include")
+target_include_directories(occutils PUBLIC "${CMAKE_CURRENT_LIST_DIR}/include")
 target_compile_options(occutils PRIVATE -Werror)
 target_compile_features(occutils PRIVATE cxx_std_17)
 
