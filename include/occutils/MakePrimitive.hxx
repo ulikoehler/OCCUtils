@@ -44,6 +44,18 @@ namespace OCCUtils {
             gp_Pnt origin=gp_Pnt());
 
         /**
+         * Make a cube that can be centered on all axes individually.
+         * @param size The dimension in the X/Y/Z dimensions
+         * @param center A bitwise-OR (|) combination of CenterX, CenterY & CenterZ.
+         * A set flag causes the box to be center in that dimension on the origin
+         * @param origin The point where to create the box. Default is (0,0,0)
+         */
+        TopoDS_Solid MakeCube(
+            double size,
+            int center=0,
+            gp_Pnt origin=gp_Pnt());
+
+        /**
          * Make a cylinder that can be centered
          * @param orientation How the cylinder's main axis is oriented
          * @param center A bitwise-OR (|) combination of

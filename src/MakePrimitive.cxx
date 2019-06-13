@@ -49,3 +49,8 @@ TopoDS_Solid OCCUtils::Primitives::MakeCylinder(
     cyl.Build();
     return cyl.Solid();
 }
+
+TopoDS_Solid OCCUtils::Primitives::MakeCube(
+    double size, int center, gp_Pnt origin) {
+    return MakeBox(size, size, size, center, origin);
+}
