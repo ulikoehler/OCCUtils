@@ -9,6 +9,7 @@ add_library(occutils SHARED
     src/SurfaceUtils.cxx
     src/ShapeComponents.cxx
     src/ShapeUtils.cxx
+    src/STEPExport.cxx
 )
 
 #target_include_directories(occutils
