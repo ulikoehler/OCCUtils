@@ -1,4 +1,5 @@
 #include "occutils/ShapeComponents.hxx"
+#include "occutils/Exceptions.hxx"
 #include <TopTools_IndexedMapOfShape.hxx>
 #include <TopExp.hxx>
 #include <TopoDS.hxx>
@@ -59,7 +60,7 @@ std::vector<TopoDS_Vertex> OCCUtils::ShapeComponents::AllVerticesWithin(const To
 }
 
 
-std::optional<TopoDS_Solid> OCCUtils::ShapeComponents::SingleSolidWithin (const TopoDS_Shape& shape) {
+std::optional<TopoDS_Solid> OCCUtils::ShapeComponents::TryGetSingleSolid (const TopoDS_Shape& shape) {
     // Is shape itself a solid?
     if(shape.ShapeType() == TopAbs_SOLID) {
         return TopoDS::Solid(shape);
@@ -73,7 +74,7 @@ std::optional<TopoDS_Solid> OCCUtils::ShapeComponents::SingleSolidWithin (const 
     }
 }
 
-std::optional<TopoDS_Face> OCCUtils::ShapeComponents::SingleFaceWithin (const TopoDS_Shape& shape) {
+std::optional<TopoDS_Face> OCCUtils::ShapeComponents::TryGetSingleFace (const TopoDS_Shape& shape) {
     // Is shape itself a solid?
     if(shape.ShapeType() == TopAbs_FACE) {
         return TopoDS::Face(shape);
@@ -87,7 +88,7 @@ std::optional<TopoDS_Face> OCCUtils::ShapeComponents::SingleFaceWithin (const To
     }
 }
 
-std::optional<TopoDS_Edge> OCCUtils::ShapeComponents::SingleEdgeWithin (const TopoDS_Shape& shape) {
+std::optional<TopoDS_Edge> OCCUtils::ShapeComponents::TryGetSingleEdge (const TopoDS_Shape& shape) {
     // Is shape itself an edge?
     if(shape.ShapeType() == TopAbs_EDGE) {
         return TopoDS::Edge(shape);
@@ -101,7 +102,7 @@ std::optional<TopoDS_Edge> OCCUtils::ShapeComponents::SingleEdgeWithin (const To
     }
 }
 
-std::optional<TopoDS_Wire> OCCUtils::ShapeComponents::SingleWireWithin (const TopoDS_Shape& shape) {
+std::optional<TopoDS_Wire> OCCUtils::ShapeComponents::TryGetSingleWire (const TopoDS_Shape& shape) {
     // Is shape itself a solid?
     if(shape.ShapeType() == TopAbs_WIRE) {
         return TopoDS::Wire(shape);
@@ -115,7 +116,7 @@ std::optional<TopoDS_Wire> OCCUtils::ShapeComponents::SingleWireWithin (const To
     }
 }
 
-std::optional<TopoDS_Vertex> OCCUtils::ShapeComponents::SingleVertexWithin (const TopoDS_Shape& shape) {
+std::optional<TopoDS_Vertex> OCCUtils::ShapeComponents::TryGetSingleVertex (const TopoDS_Shape& shape) {
     // Is shape itself a solid?
     if(shape.ShapeType() == TopAbs_VERTEX) {
         return TopoDS::Vertex(shape);
@@ -127,4 +128,44 @@ std::optional<TopoDS_Vertex> OCCUtils::ShapeComponents::SingleVertexWithin (cons
     } else {
         return vertices[0];
     }
+}
+
+TopoDS_Solid OCCUtils::ShapeComponents::GetSingleSolid (const TopoDS_Shape& shape) {
+    auto opt = TryGetSingleSolid(shape);
+    if(!opt.has_value()) {
+        throw new OCCTopologyCountMismatchException("Shape is not a solid and does not contain a single solid");
+    }
+    return opt.value();
+}
+
+TopoDS_Face OCCUtils::ShapeComponents::GetSingleFace (const TopoDS_Shape& shape) {
+    auto opt = TryGetSingleFace(shape);
+    if(!opt.has_value()) {
+        throw new OCCTopologyCountMismatchException("Shape is not a face and does not contain a single face");
+    }
+    return opt.value();
+}
+
+TopoDS_Edge OCCUtils::ShapeComponents::GetSingleEdge (const TopoDS_Shape& shape) {
+    auto opt = TryGetSingleEdge(shape);
+    if(!opt.has_value()) {
+        throw new OCCTopologyCountMismatchException("Shape is not a edge and does not contain a single edge");
+    }
+    return opt.value();
+}
+
+TopoDS_Wire OCCUtils::ShapeComponents::GetSingleWire (const TopoDS_Shape& shape) {
+    auto opt = TryGetSingleWire(shape);
+    if(!opt.has_value()) {
+        throw new OCCTopologyCountMismatchException("Shape is not a wire and does not contain a single wire");
+    }
+    return opt.value();
+}
+
+TopoDS_Vertex OCCUtils::ShapeComponents::GetSingleVertex (const TopoDS_Shape& shape) {
+    auto opt = TryGetSingleVertex(shape);
+    if(!opt.has_value()) {
+        throw new OCCTopologyCountMismatchException("Shape is not a vertex and does not contain a single vertex");
+    }
+    return opt.value();
 }
