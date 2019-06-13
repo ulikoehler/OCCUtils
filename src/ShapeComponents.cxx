@@ -2,6 +2,7 @@
 #include "occutils/Exceptions.hxx"
 #include <TopTools_IndexedMapOfShape.hxx>
 #include <TopExp.hxx>
+#include <BRep_Tool.hxx>
 #include <TopoDS.hxx>
 
 std::vector<TopoDS_Solid> OCCUtils::ShapeComponents::AllSolidsWithin(const TopoDS_Shape& shape) {
@@ -59,6 +60,17 @@ std::vector<TopoDS_Vertex> OCCUtils::ShapeComponents::AllVerticesWithin(const To
     return vertices;
 }
 
+std::vector<gp_Pnt> OCCUtils::ShapeComponents::AllVertexCoordinatesWithin(const TopoDS_Shape& shape) {
+    TopTools_IndexedMapOfShape vertexShapes;
+    TopExp::MapShapes (shape, TopAbs_VERTEX, vertexShapes);
+
+    std::vector<gp_Pnt> vertices;
+    for (int i = 1; i <= vertexShapes.Extent (); i++) {
+        const TopoDS_Vertex vertex = TopoDS::Vertex (vertexShapes (i));
+        vertices.emplace_back (BRep_Tool::Pnt(vertex));
+    }
+    return vertices;
+}
 
 std::optional<TopoDS_Solid> OCCUtils::ShapeComponents::TryGetSingleSolid (const TopoDS_Shape& shape) {
     // Is shape itself a solid?

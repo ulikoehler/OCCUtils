@@ -13,6 +13,8 @@ add_library(occutils SHARED
     src/MakePrimitive.cxx
     src/Directions.cxx
     src/Boolean.cxx
+    src/PrintOCC.cxx
+    src/Fillet.cxx
 )
 
 #target_include_directories(occutils

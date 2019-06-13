@@ -38,6 +38,13 @@ namespace OCCUtils {
          * (not including the shape itself, if it is a vertex)
          */
         std::vector<TopoDS_Vertex> AllVerticesWithin(const TopoDS_Shape& shape);
+        /**
+         * Get all vertex coordinates in a given shape.
+         * Like AllVerticesWithin() but converts the TopoDS_Vertex instances
+         * to gp_Pnts
+         * (not including the shape itself, if it is a vertex)
+         */
+        std::vector<gp_Pnt> AllVertexCoordinatesWithin(const TopoDS_Shape& shape);
 
         /**
          * If [shape] is a solid, return shape.
