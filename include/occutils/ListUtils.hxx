@@ -1,6 +1,7 @@
 #pragma once
 #include <NCollection_List.hxx>
 #include <utility> // std::pair<>
+#include <vector> // std::pair<>
 
 namespace OCCUtils {
     namespace ListUtils {
@@ -27,5 +28,27 @@ namespace OCCUtils {
             return ret;
         }
 
+        /**
+         * Convert any STL or similar container of type T
+         * to a NCollection_List<T>.
+         */
+        template<typename T, template<typename> typename Container>
+        NCollection_List<T> ToOCCList(const Container<T>& args) {
+            NCollection_List<T> ret;
+            for(const T& arg : args) {
+                ret.Append(arg);
+            }
+            return ret;
+        }
+
+        template<typename T>
+        std::vector<T> ToSTLVector(const NCollection_List<T>& args) {
+            std::vector<T> ret;
+            ret.reserve(args.size());
+            for(const T& arg : args) {
+                ret.push_back(arg);
+            }
+            return ret;
+        }
     }
 }
