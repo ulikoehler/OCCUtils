@@ -2,6 +2,7 @@
 #include <NCollection_List.hxx>
 #include <utility> // std::pair<>
 #include <vector> // std::pair<>
+#include <list> // std::pair<>
 
 namespace OCCUtils {
     namespace ListUtils {
@@ -29,10 +30,24 @@ namespace OCCUtils {
         }
 
         /**
-         * Convert any STL or similar container of type T
+         * Convert any STL or STL-like container of type T
          * to a NCollection_List<T>.
          */
-        template<typename T, template<typename> typename Container>
+        template<template<typename, typename> typename Container, typename T, typename Allocator>
+        NCollection_List<T> ToOCCList(const Container<T, Allocator>& args) {
+            NCollection_List<T> ret;
+            for(const T& arg : args) {
+                ret.Append(arg);
+            }
+            return ret;
+        }
+
+        /**
+         * Convert any simple-style template container to an OCC list.
+         * Also: Convenience to convert an initializer list,
+         * e.g. {arg1, arg2, arg3} to an OCC list
+         */
+        template<template<typename> typename Container, typename T>
         NCollection_List<T> ToOCCList(const Container<T>& args) {
             NCollection_List<T> ret;
             for(const T& arg : args) {
@@ -41,10 +56,20 @@ namespace OCCUtils {
             return ret;
         }
 
+
         template<typename T>
         std::vector<T> ToSTLVector(const NCollection_List<T>& args) {
             std::vector<T> ret;
             ret.reserve(args.size());
+            for(const T& arg : args) {
+                ret.push_back(arg);
+            }
+            return ret;
+        }
+
+        template<typename T>
+        std::list<T> ToSTLList(const NCollection_List<T>& args) {
+            std::list<T> ret;
             for(const T& arg : args) {
                 ret.push_back(arg);
             }
