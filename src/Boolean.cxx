@@ -5,6 +5,12 @@
 using namespace OCCUtils;
 
 TopoDS_Shape OCCUtils::Boolean::Fuse(const TopTools_ListOfShape& arguments, const TopTools_ListOfShape& tools) {
+    if(arguments.Size() == 0) {
+        throw std::invalid_argument("Fuse arguments must have at least one shape!");
+    }
+    if(tools.Size() == 0) {
+        throw std::invalid_argument("Fuse tools must have at least one shape!");
+    }
     // Configure fuse
     BRepAlgoAPI_Fuse fuse;
     fuse.SetArguments(arguments);

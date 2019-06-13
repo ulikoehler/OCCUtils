@@ -32,18 +32,6 @@ TopoDS_Solid OCCUtils::Primitives::MakeCylinder(
     int center,
     gp_Pnt origin) {
     // Compute offsets based on centering
-    if(center & CenterD) {
-        if(orientation == Orientation::X) {
-            origin.SetZ(origin.Z() - diameter / 2.0);
-            origin.SetY(origin.Y() - diameter / 2.0);
-        } else if(orientation == Orientation::Y) {
-            origin.SetZ(origin.Z() - diameter / 2.0);
-            origin.SetX(origin.X() - diameter / 2.0);
-        } else if(orientation == Orientation::Z) {
-            origin.SetX(origin.X() - diameter / 2.0);
-            origin.SetY(origin.Y() - diameter / 2.0);
-        }
-    }
     if(center & CenterL) {
         if(orientation == Orientation::X) {
             origin.SetX(origin.X() - diameter / 2.0);

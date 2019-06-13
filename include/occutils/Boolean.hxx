@@ -11,34 +11,43 @@
 namespace OCCUtils {
     namespace Boolean {
         /**
-         * Boolean AND (Fuse) on two or more shapes.
-         * Raises std::invalid_argument if there is only ONE arg
-         * Examples:
-         *      Fuse({shape1, shape2})
-         *      Fuse({shape1, shape2, shape3})
-         *      ...
-         * You can call Fuse() with virtually any STL- or STL-like container.
-         */
-
-        /**
          * Fuse two or more shapes in an STL-like container
+         * Raises std::invalid_argument if there is only ONE shape
          */
         template<template<typename, typename> typename Container, typename Allocator>
         TopoDS_Shape Fuse(const Container<TopoDS_Shape, Allocator>& shapes) {
-            return Fuse(OCCUtils::ListUtils::ToOCCList(shapes));
+            auto list = OCCUtils::ListUtils::ToOCCList(shapes);
+            return Fuse(list);
         }
+
         /**
          * Fuse two or more shapes in a OCC-style container
+         * Raises std::invalid_argument if there is only ONE shape
          */
         template<template<typename> typename Container>
         TopoDS_Shape Fuse(const Container<TopoDS_Shape>& shapes) {
-            return Fuse(OCCUtils::ListUtils::ToOCCList(shapes));
+            auto list = OCCUtils::ListUtils::ToOCCList(shapes);
+            return Fuse(list);
         }
-        
+
+        /**
+         * Fuse two or more shapes in a OCC-style container.
+         * Convenience call function:
+         *      Fuse({shape1, shape2})
+         *      Fuse({shape1, shape2, shape3})
+         * Raises std::invalid_argument if there is only ONE shape
+         */
+        TopoDS_Shape Fuse(const std::initializer_list<TopoDS_Shape>& shapes) {
+            auto list = OCCUtils::ListUtils::ToOCCList(shapes);
+            return Fuse(list);
+        }
+
         TopoDS_Shape Fuse(const TopTools_ListOfShape& shapes);
+        
         /**
          * Fuse with two lists of arguments.
          * For Fuse() this is equivalent to joining the lists.
+         * Raises std::invalid_argument if there is only ONE shape
          */
         TopoDS_Shape Fuse(const TopTools_ListOfShape& arguments, const TopTools_ListOfShape& tools);
     }
