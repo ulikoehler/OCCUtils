@@ -6,7 +6,6 @@
 using namespace std;
 
 void OCCUtils::STEP::ExportSTEP(const TopoDS_Shape& shape, const string& filename, const string& unit) {
-    //possible units: 
     if (shape.IsNull () == true) {
         throw new invalid_argument("Can't export null shape to STEP");
     }
