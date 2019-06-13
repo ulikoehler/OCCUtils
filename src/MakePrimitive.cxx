@@ -1,5 +1,6 @@
 #include "occutils/MakePrimitive.hxx"
 #include <BRepPrimAPI_MakeBox.hxx>
+#include <BRepPrimAPI_MakeCylinder.hxx>
 
 using namespace OCCUtils;
 
@@ -22,4 +23,23 @@ TopoDS_Solid OCCUtils::Primitives::MakeBox(
     box.Build();
     return box.Solid();
 
+}
+
+TopoDS_Solid OCCUtils::Primitives::MakeCylinder(
+    double diameter, double length,
+    int center,
+    gp_Pnt origin) {
+    // Compute offsets based on centering
+    if(center & CenterD) {
+        origin.SetX(origin.X() - diameter / 2.0);
+        origin.SetY(origin.Y() - diameter / 2.0);
+    }
+    if(center & CenterL) {
+        origin.SetZ(origin.Z() - length / 2.0);
+    }
+    // Build primitive
+    gp_Ax2 ax;
+    BRepPrimAPI_MakeCylinder cyl(ax, diameter / 2.0, length);
+    cyl.Build();
+    return cyl.Solid();
 }
