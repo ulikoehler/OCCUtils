@@ -12,6 +12,7 @@ add_library(occutils SHARED
     src/STEPExport.cxx
     src/MakePrimitive.cxx
     src/Directions.cxx
+    src/Boolean.cxx
 )
 
 #target_include_directories(occutils
