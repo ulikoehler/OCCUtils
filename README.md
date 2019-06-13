@@ -72,3 +72,8 @@ replacing `my_target` with the name of your build target (i.e. the first argumen
 On my [blog](https://techoverflow.net) I provide examples of specific usecases for OpenCASCADE, including how to use the relevant OCCUtils functions:
 
 * [How to compute surface area of TopoDS_Face in OpenCASCADE](https://techoverflow.net/2019/06/13/how-to-compute-surface-area-of-topods_face-in-opencascade/)
+* [How to create a Cylinder TopoDS_Solid in OpenCASCADE](https://techoverflow.net/2019/06/13/how-to-create-a-cylinder-topods_solid-in-opencascade/)
+* [How to create a Box TopoDS_Solid in OpenCASCADE](https://techoverflow.net/2019/06/13/how-to-create-a-box-topods_solid-in-opencascade/)
+* [How to create a Cube TopoDS_Solid in OpenCASCADE](https://techoverflow.net/2019/06/13/how-to-create-a-cube-topods_solid-in-opencascade/)
+* [How to create TopTools_ListOfShape of two or more shapes in OpenCASCADE](https://techoverflow.net/2019/06/13/how-to-create-toptools_listofshape-of-two-or-more-shapes-in-opencascade/)
+* [How to iterate all edges in TopoDS_Face using OpenCASCADE](https://techoverflow.net/2019/06/13/how-to-iterate-all-edges-in-topods_face-using-opencascade/)

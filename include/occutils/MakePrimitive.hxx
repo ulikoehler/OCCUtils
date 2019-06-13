@@ -15,8 +15,7 @@ namespace OCCUtils {
             CenterX = 1,
             CenterY = 2,
             CenterZ = 4,
-            CenterL = 8,
-            CenterD = 16
+            CenterL = 8
         };
 
         /**
