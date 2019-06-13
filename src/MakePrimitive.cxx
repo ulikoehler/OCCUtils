@@ -1,4 +1,5 @@
 #include "occutils/MakePrimitive.hxx"
+#include "occutils/Directions.hxx"
 #include <BRepPrimAPI_MakeBox.hxx>
 #include <BRepPrimAPI_MakeCylinder.hxx>
 
@@ -27,18 +28,35 @@ TopoDS_Solid OCCUtils::Primitives::MakeBox(
 
 TopoDS_Solid OCCUtils::Primitives::MakeCylinder(
     double diameter, double length,
+    Orientation orientation,
     int center,
     gp_Pnt origin) {
     // Compute offsets based on centering
     if(center & CenterD) {
-        origin.SetX(origin.X() - diameter / 2.0);
-        origin.SetY(origin.Y() - diameter / 2.0);
+        if(orientation == Orientation::X) {
+            origin.SetZ(origin.Z() - diameter / 2.0);
+            origin.SetY(origin.Y() - diameter / 2.0);
+        } else if(orientation == Orientation::Y) {
+            origin.SetZ(origin.Z() - diameter / 2.0);
+            origin.SetX(origin.X() - diameter / 2.0);
+        } else if(orientation == Orientation::Z) {
+            origin.SetX(origin.X() - diameter / 2.0);
+            origin.SetY(origin.Y() - diameter / 2.0);
+        }
     }
     if(center & CenterL) {
-        origin.SetZ(origin.Z() - length / 2.0);
+        if(orientation == Orientation::X) {
+            origin.SetX(origin.X() - diameter / 2.0);
+        } else if(orientation == Orientation::Y) {
+            origin.SetY(origin.Y() - diameter / 2.0);
+        } else if(orientation == Orientation::Z) {
+            origin.SetZ(origin.Z() - diameter / 2.0);
+        }
     }
+    // Which axis
+    gp_Dir axis = (orientation == Orientation::X ? Directions::X() : (orientation == Orientation::Y ? Directions::Y() : Directions::Z()));
     // Build primitive
-    gp_Ax2 ax;
+    gp_Ax2 ax(origin, axis);
     BRepPrimAPI_MakeCylinder cyl(ax, diameter / 2.0, length);
     cyl.Build();
     return cyl.Solid();

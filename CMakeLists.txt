@@ -11,6 +11,7 @@ add_library(occutils SHARED
     src/ShapeUtils.cxx
     src/STEPExport.cxx
     src/MakePrimitive.cxx
+    src/Directions.cxx
 )
 
 #target_include_directories(occutils
