@@ -27,3 +27,7 @@ TopoDS_Shape OCCUtils::Boolean::Fuse(const TopTools_ListOfShape& shapes) {
     auto toolsAndArgs = ListUtils::SplitIntoHeadAndTail(shapes, 1);
     return Fuse(toolsAndArgs.second, toolsAndArgs.first);
 }
+
+TopoDS_Shape OCCUtils::Boolean::Fuse(const std::initializer_list<TopoDS_Shape>& shapes) {
+    return Fuse(OCCUtils::ListUtils::ToOCCList(shapes));
+}
