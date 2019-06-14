@@ -82,7 +82,7 @@ namespace OCCUtils {
             writer.SetLayerMode(true);
             writer.SetPropsMode(true);
             writer.SetColorMode(true);
-            writer.Perform(internals->document, "out2.step");
+            writer.Perform(internals->document, filename.c_str());
         }
     }
 }
