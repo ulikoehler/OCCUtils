@@ -16,6 +16,7 @@ add_library(occutils SHARED
     src/ExtendedSTEP.cxx
     src/PrintOCC.cxx
     src/Fillet.cxx
+    src/Wire.cxx
 )
 
 #target_include_directories(occutils

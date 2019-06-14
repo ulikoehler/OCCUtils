@@ -1,0 +1,18 @@
+#include "occutils/Wire.hxx"
+#include <BRepLib_MakeWire.hxx>
+
+TopoDS_Wire OCCUtils::Wire::FromEdges(const std::initializer_list<TopoDS_Edge>& edges) {
+    BRepLib_MakeWire wireMaker;
+    for(const auto& edge : edges) {
+        wireMaker.Add(edge);
+    }
+    return wireMaker.Wire();
+}
+
+TopoDS_Wire OCCUtils::Wire::FromEdges(const std::vector<TopoDS_Edge>& edges) {
+    BRepLib_MakeWire wireMaker;
+    for(const auto& edge : edges) {
+        wireMaker.Add(edge);
+    }
+    return wireMaker.Wire();
+}
