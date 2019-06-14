@@ -13,6 +13,7 @@ add_library(occutils SHARED
     src/MakePrimitive.cxx
     src/Directions.cxx
     src/Boolean.cxx
+    src/ExtendedSTEP.cxx
     src/PrintOCC.cxx
     src/Fillet.cxx
 )
