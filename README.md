@@ -79,3 +79,5 @@ On my [blog](https://techoverflow.net) I provide examples of specific usecases f
 * [How to iterate all edges in TopoDS_Face using OpenCASCADE](https://techoverflow.net/2019/06/13/how-to-iterate-all-edges-in-topods_face-using-opencascade/)
 * [How to export STEP file in OpenCASCADE](https://techoverflow.net/2019/06/13/how-to-export-step-file-in-opencascade/)
 * [How to fuse TopoDS_Shapes in OpenCASCADE (boolean AND)](https://techoverflow.net/2019/06/14/how-to-fuse-topods_shapes-in-opencascade-boolean-and/)
+* [How to export colored STEP files in OpenCASCADE](https://techoverflow.net/2019/06/14/how-to-export-colored-step-files-in-opencascade/)
+* [Overview of all standard colors available in OpenCASCADE](https://techoverflow.net/2019/06/14/overview-of-all-standard-colors-available-in-opencascade/)
