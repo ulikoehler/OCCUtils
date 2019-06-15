@@ -1,5 +1,5 @@
 #include "occutils/Curve.hxx"
-#include <BRepTool.hxx>
+#include <BRep_Tool.hxx>
 
 
 GeomAdaptor_Curve OCCUtils::Curve::FromEdge(const TopoDS_Edge& edge) {
