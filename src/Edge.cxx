@@ -28,6 +28,10 @@ TopoDS_Edge OCCUtils::Edge::FullCircle(const gp_Ax1& axis, double radius) {
     return FullCircle(Ax2::FromAx1(axis), radius);
 }
 
+TopoDS_Edge OCCUtils::Edge::FullCircle(const gp_Pnt& center, const gp_Dir& direction, double radius) {
+    return FullCircle(gp_Ax1(center, direction), radius);
+}
+
 TopoDS_Edge OCCUtils::Edge::FullCircle(const gp_Ax2& axis, double radius) {
     return BRepBuilderAPI_MakeEdge(gp_Circ(axis, radius)).Edge();
 }

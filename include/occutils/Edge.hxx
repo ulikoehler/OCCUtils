@@ -27,6 +27,11 @@ namespace OCCUtils {
          */
         TopoDS_Edge FullCircle(const gp_Ax1& axis, double radius=1.0);
         /**
+         * Create a full circle edge at center
+         * with the circle's normal pointing to direction.
+         */
+        TopoDS_Edge FullCircle(const gp_Pnt& center, const gp_Dir& direction, double radius=1.0);
+        /**
          * Create a full circle edge at axis.Location(),
          * with the circle's normal pointing to axis.Direction().
          */
