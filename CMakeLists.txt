@@ -8,7 +8,7 @@ include_directories (/usr/include/opencascade /usr/include/occt /usr/include/fre
 add_library(occutils SHARED
     src/Surface.cxx
     src/ShapeComponents.cxx
-    src/ShapeUtils.cxx
+    src/Shape.cxx
     src/STEPExport.cxx
     src/MakePrimitive.cxx
     src/Directions.cxx
