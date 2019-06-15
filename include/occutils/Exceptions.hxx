@@ -12,6 +12,15 @@ struct OCCUtilsBaseException : std::invalid_argument {
  * Baseclass for exceptions that directly relate to the
  * BRep topology.
  */
+struct OCCConstructionFailedException : OCCUtilsBaseException {
+    OCCConstructionFailedException(const char *msg) : OCCUtilsBaseException(msg) {}
+    OCCConstructionFailedException(const std::string &msg) : OCCUtilsBaseException(msg) {}
+};
+
+/**
+ * Baseclass for exceptions that directly relate to the
+ * BRep topology.
+ */
 struct OCCTopologyException : OCCUtilsBaseException {
     OCCTopologyException(const char *msg) : OCCUtilsBaseException(msg) {}
     OCCTopologyException(const std::string &msg) : OCCUtilsBaseException(msg) {}
