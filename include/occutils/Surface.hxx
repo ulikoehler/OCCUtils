@@ -8,7 +8,7 @@
 #include <optional>
 
 namespace OCCUtils {
-    namespace SurfaceUtils {
+    namespace Surface {
         /**
          * Get the center of mass of a surface.
          * This isn't neccessarily on the surface itself.
@@ -21,7 +21,7 @@ namespace OCCUtils {
         /**
          * Get the 3D surface from a given face
          */
-        std::optional<GeomAdaptor_Surface> SurfaceFromFace(const TopoDS_Face& face);
+        std::optional<GeomAdaptor_Surface> FromFace(const TopoDS_Face& face);
         /**
          * Get both the area and the center of mass of a surface.
          * This is more efficient than computing them individually.

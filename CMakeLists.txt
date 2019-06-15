@@ -6,7 +6,7 @@ project(liboccutils)
 include_directories (/usr/include/opencascade /usr/include/occt /usr/include/freetype2)
 
 add_library(occutils SHARED
-    src/SurfaceUtils.cxx
+    src/Surface.cxx
     src/ShapeComponents.cxx
     src/ShapeUtils.cxx
     src/STEPExport.cxx
