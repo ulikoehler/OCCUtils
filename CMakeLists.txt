@@ -10,6 +10,7 @@ add_library(occutils SHARED
     src/ShapeComponents.cxx
     src/Shape.cxx
     src/Plane.cxx
+    src/Pipe.cxx
     src/STEPExport.cxx
     src/MakePrimitive.cxx
     src/Directions.cxx
