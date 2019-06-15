@@ -28,3 +28,27 @@ gp_Ax1 OCCUtils::Ax1::OMinusY() {
 gp_Ax1 OCCUtils::Ax1::OMinusZ() {
     return gp_Ax1(Point::Origin(), Direction::MinusZ());
 }
+
+gp_Ax2 OCCUtils::Ax2::OX() {
+    return gp_Ax2(Point::Origin(), Direction::X());
+}
+
+gp_Ax2 OCCUtils::Ax2::OY() {
+    return gp_Ax2(Point::Origin(), Direction::Y());
+}
+
+gp_Ax2 OCCUtils::Ax2::OZ() {
+    return gp_Ax2(Point::Origin(), Direction::Z());
+}
+
+gp_Ax2 OCCUtils::Ax2::OMinusX() {
+    return gp_Ax2(Point::Origin(), Direction::MinusX());
+}
+
+gp_Ax2 OCCUtils::Ax2::OMinusY() {
+    return gp_Ax2(Point::Origin(), Direction::MinusY());
+}
+
+gp_Ax2 OCCUtils::Ax2::OMinusZ() {
+    return gp_Ax2(Point::Origin(), Direction::MinusZ());
+}
