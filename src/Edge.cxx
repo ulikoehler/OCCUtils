@@ -1,7 +1,10 @@
 #include "occutils/Edge.hxx"
+#include "occutils/Axis.hxx"
+#include "occutils/Point.hxx"
 #include "occutils/Equality.hxx"
 #include <Precision.hxx>
 #include <BRepBuilderAPI_MakeEdge.hxx>
+#include <gp_Circ.hxx>
 
 TopoDS_Edge OCCUtils::Edge::FromPoints (const gp_Pnt& p1, const gp_Pnt& p2) {
     // Are the two points coincident?
@@ -11,4 +14,20 @@ TopoDS_Edge OCCUtils::Edge::FromPoints (const gp_Pnt& p1, const gp_Pnt& p2) {
     }
     // Not the same => Create a linear edge
     return BRepBuilderAPI_MakeEdge(p1, p2).Edge();
+}
+
+TopoDS_Edge OCCUtils::Edge::FullCircle(double radius) {
+    return FullCircle(Ax2::OZ(), radius);
+}
+
+TopoDS_Edge OCCUtils::Edge::FullCircle(const gp_Dir& direction, double radius) {
+    return FullCircle(gp_Ax2(Point::Origin(), direction), radius);
+}
+
+TopoDS_Edge OCCUtils::Edge::FullCircle(const gp_Ax1& axis, double radius) {
+    return FullCircle(Ax2::FromAx1(axis), radius);
+}
+
+TopoDS_Edge OCCUtils::Edge::FullCircle(const gp_Ax2& axis, double radius) {
+    return BRepBuilderAPI_MakeEdge(gp_Circ(axis, radius)).Edge();
 }

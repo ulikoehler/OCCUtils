@@ -29,6 +29,10 @@ gp_Ax1 OCCUtils::Ax1::OMinusZ() {
     return gp_Ax1(Point::Origin(), Direction::MinusZ());
 }
 
+gp_Ax2 OCCUtils::Ax2::FromAx1(const gp_Ax1& axis) {
+    return gp_Ax2(axis.Location(), axis.Direction());
+}
+
 gp_Ax2 OCCUtils::Ax2::OX() {
     return gp_Ax2(Point::Origin(), Direction::X());
 }

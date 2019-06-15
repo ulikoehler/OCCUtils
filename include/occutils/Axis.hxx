@@ -44,6 +44,13 @@ namespace OCCUtils {
     }
     namespace Ax2 {
         /**
+         * Initialize a gp_Ax2 from a gp_Ax1.
+         * Note that the main direction is strictly defined,
+         * but the "X" direction isn't. However for many use-cases
+         * this is fine.
+         */
+        gp_Ax2 FromAx1(const gp_Ax1& axis);
+        /**
          * Get the Ax1 with:
          *  - Location = origin point
          *  - Main axis = X axis
