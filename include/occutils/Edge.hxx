@@ -7,6 +7,6 @@ namespace OCCUtils {
         /**
          * Create a linear edge between two points
          */
-        TopoDS_Edge MakeEdge (const gp_Pnt& p1, const gp_Pnt& p2);
+        TopoDS_Edge FromPoints (const gp_Pnt& p1, const gp_Pnt& p2);
     }
 }
