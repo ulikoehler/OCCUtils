@@ -17,6 +17,7 @@ add_library(occutils SHARED
     src/PrintOCC.cxx
     src/Fillet.cxx
     src/Wire.cxx
+    src/Edge.cxx
 )
 
 #target_include_directories(occutils
