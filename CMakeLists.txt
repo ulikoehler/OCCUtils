@@ -18,6 +18,7 @@ add_library(occutils SHARED
     src/Fillet.cxx
     src/Wire.cxx
     src/Edge.cxx
+    src/Face.cxx
 )
 
 #target_include_directories(occutils
