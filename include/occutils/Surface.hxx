@@ -19,7 +19,7 @@ namespace OCCUtils {
         double Area(const TopoDS_Shape& face);
         /**
          * Get the 3D surface from a given face
-         * If no surface can be found, returnValue.IsNull() == true
+         * If no surface can be found, returnValue.Surface().IsNull() == true
          */
         GeomAdaptor_Surface FromFace(const TopoDS_Face& face);
         /**

@@ -7,7 +7,7 @@ namespace OCCUtils {
     namespace Curve {
         /**
          * Get a curve from the given edge.
-         * If it fails, returnValue.IsNull() == true
+         * If it fails, returnValue.Curve().IsNull() == true
          */
         GeomAdaptor_Curve FromEdge(const TopoDS_Edge& edge);
     }
