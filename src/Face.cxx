@@ -21,14 +21,6 @@ TopoDS_Face OCCUtils::Face::FromEdges(const std::vector<TopoDS_Edge>& edges) {
     return FromWire(Wire::FromEdges(edges));
 }
 
-TopoDS_Face FromEdge(const TopoDS_Edge& edge) {
+TopoDS_Face OCCUtils::Face::FromEdge(const TopoDS_Edge& edge) {
     return Face::FromWire(Wire::FromEdges({edge}));
-}
-
-TopoDS_Face FromEdges(const std::initializer_list<TopoDS_Edge>& edges) {
-    return Face::FromWire(Wire::FromEdges(edges));
-}
-
-TopoDS_Face FromEdges(const std::vector<TopoDS_Edge>& edges) {
-    return Face::FromWire(Wire::FromEdges(edges));
 }

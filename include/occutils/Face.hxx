@@ -30,11 +30,5 @@ namespace OCCUtils {
          * If wire.IsNull(), then result.IsNull() as well.
          */
         TopoDS_Face FromEdges(const std::vector<TopoDS_Edge>& edges);
-        /**
-         * Construct a face from an outer wire constructed from the given edges.
-         * If wire.IsNull(), then result.IsNull() as well.
-         */
-        TopoDS_Face FromEdges(const std::initializer_list<TopoDS_Edge>& edges);
-        TopoDS_Face FromEdges(const std::vector<TopoDS_Edge>& edges);
     }
 }
