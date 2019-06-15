@@ -17,7 +17,7 @@ bool operator!=(const gp_XYZ &a, const gp_XYZ &b){
 }
 
 bool operator==(const gp_Vec &a, const gp_Vec &b){
-    return a.IsEqual(b, Precision::Confusion());
+    return a.IsEqual(b, Precision::Confusion(), Precision::Angular());
 }
 
 bool operator!=(const gp_Vec &a, const gp_Vec &b){

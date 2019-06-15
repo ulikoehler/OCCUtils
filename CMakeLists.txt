@@ -19,6 +19,7 @@ add_library(occutils SHARED
     src/Wire.cxx
     src/Edge.cxx
     src/Face.cxx
+    src/Equality.cxx
 )
 
 #target_include_directories(occutils

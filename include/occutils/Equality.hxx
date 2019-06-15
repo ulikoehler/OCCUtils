@@ -16,5 +16,11 @@ bool operator!=(const gp_Pnt &a, const gp_Pnt &b);
 bool operator==(const gp_XYZ &a, const gp_XYZ &b);
 bool operator!=(const gp_XYZ &a, const gp_XYZ &b);
 
+/**
+ * Checks vector equality with:
+ *  - Precision::Confusion() linear &
+ *  - Precision::Angular() angular
+ * tolerances using gpVec::IsEqual().
+ */
 bool operator==(const gp_Vec &a, const gp_Vec &b);
 bool operator!=(const gp_Vec &a, const gp_Vec &b);
