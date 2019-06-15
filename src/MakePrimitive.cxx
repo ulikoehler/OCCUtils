@@ -1,5 +1,5 @@
 #include "occutils/MakePrimitive.hxx"
-#include "occutils/Directions.hxx"
+#include "occutils/Direction.hxx"
 #include <BRepPrimAPI_MakeBox.hxx>
 #include <BRepPrimAPI_MakeCylinder.hxx>
 
@@ -42,7 +42,7 @@ TopoDS_Solid OCCUtils::Primitives::MakeCylinder(
         }
     }
     // Which axis
-    gp_Dir axis = (orientation == Orientation::X ? Directions::X() : (orientation == Orientation::Y ? Directions::Y() : Directions::Z()));
+    gp_Dir axis = (orientation == Orientation::X ? Direction::X() : (orientation == Orientation::Y ? Direction::Y() : Direction::Z()));
     // Build primitive
     gp_Ax2 ax(origin, axis);
     BRepPrimAPI_MakeCylinder cyl(ax, diameter / 2.0, length);

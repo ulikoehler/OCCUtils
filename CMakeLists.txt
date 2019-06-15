@@ -20,6 +20,8 @@ add_library(occutils SHARED
     src/Edge.cxx
     src/Face.cxx
     src/Equality.cxx
+    src/Axis.cxx
+    src/Point.cxx
 )
 
 #target_include_directories(occutils

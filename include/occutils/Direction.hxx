@@ -2,7 +2,7 @@
 #include <gp_Dir.hxx>
 
 namespace OCCUtils {
-    namespace Directions {
+    namespace Direction {
         /**
          * Get the global X axis direction
          */
@@ -15,5 +15,17 @@ namespace OCCUtils {
          * Get the global Z axis direction
          */
         gp_Dir Z();
+        /**
+         * Get the global -X axis direction
+         */
+        gp_Dir MinusX();
+        /**
+         * Get the global -Y axis direction
+         */
+        gp_Dir MinusY();
+        /**
+         * Get the global -Z axis direction
+         */
+        gp_Dir MinusZ();
     }
 }
