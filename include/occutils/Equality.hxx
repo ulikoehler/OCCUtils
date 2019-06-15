@@ -7,7 +7,14 @@
  * as tolerance.
  */
 #include <gp_Pnt.hxx>
+#include <gp_XYZ.hxx>
+#include <gp_Vec.hxx>
 
-// Close within tolerance
 bool operator==(const gp_Pnt &a, const gp_Pnt &b);
 bool operator!=(const gp_Pnt &a, const gp_Pnt &b);
+
+bool operator==(const gp_XYZ &a, const gp_XYZ &b);
+bool operator!=(const gp_XYZ &a, const gp_XYZ &b);
+
+bool operator==(const gp_Vec &a, const gp_Vec &b);
+bool operator!=(const gp_Vec &a, const gp_Vec &b);
