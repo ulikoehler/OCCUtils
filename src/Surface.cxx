@@ -11,12 +11,12 @@ double OCCUtils::Surface::Area(const TopoDS_Shape& face) {
     return gprops.Mass();
 }
 
-std::optional<GeomAdaptor_Surface> OCCUtils::Surface::FromFace(const TopoDS_Face& face) {
+GeomAdaptor_Surface OCCUtils::Surface::FromFace(const TopoDS_Face& face) {
     BRepLib_FindSurface bfs(face);
     if (!bfs.Found()) {
-        return std::nullopt;
+        return GeomAdaptor_Surface();
     }
-    return make_optional(bfs.Surface());
+    return bfs.Surface();
 }
 
 gp_Pnt OCCUtils::Surface::CenterOfMass(const TopoDS_Shape& face) {

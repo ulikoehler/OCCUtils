@@ -5,7 +5,6 @@
 #include <TopoDS_Shape.hxx>
 #include <TopoDS_Face.hxx>
 #include <GeomAdaptor_Surface.hxx>
-#include <optional>
 
 namespace OCCUtils {
     namespace Surface {
@@ -20,8 +19,9 @@ namespace OCCUtils {
         double Area(const TopoDS_Shape& face);
         /**
          * Get the 3D surface from a given face
+         * If no surface can be found, returnValue.IsNull() == true
          */
-        std::optional<GeomAdaptor_Surface> FromFace(const TopoDS_Face& face);
+        GeomAdaptor_Surface FromFace(const TopoDS_Face& face);
         /**
          * Get both the area and the center of mass of a surface.
          * This is more efficient than computing them individually.
