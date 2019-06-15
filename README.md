@@ -1,6 +1,22 @@
 # OCCUtils
 [OpenCASCADE](https://opencascade.com) utility library - algorithms and convenience functions.
 
+## Design goals
+
+OCCUtils aims to be
+
+* **Simple to use**: Most tasks should be accomplishable in *one line of code*.
+* **Aid rapid development**: No need to write tons of utility functions ; no need to wait for long compile-times
+* **Modular**: Pull in only what you need, or just copy the underlying sourcecode.
+* **Clear**: What you write should be what you mean: `Edge::FromPoints()` instead of `BRepBuilderAPI_MakeEdge` three-liners.
+* **High-Level**: Common tasks in 3D engineering should be accomplishable without diving into low level OpenCASCADE code
+* **Modern**: Uses features from C++17, because those make your code more readable.
+* **Liberally licensed**: OCCUtils is licensed under Apache License v2.0, allowing you to copy & modify the sourcecode for use in your commercial projects for free. Keep in mind that OpenCASCADE is still LGPL licensed.
+
+Note that OCCUtils is very young and although it is used in multiple production projects, it might not have all the functionality you want or need, and might have some bugs.
+
+If you are missing functionality, feel free to submit an issue or pull request.
+
 ### Prerequisites
 
 First install OpenCASCADE 7.x. My preferred method on Ubuntu is to use the [FreeCAD daily PPA](https://launchpad.net/~freecad-maintainers/+archive/ubuntu/freecad-daily):
