@@ -8,7 +8,7 @@
 #include <vector>
 
 namespace OCCUtils {
-    namespace ShapeUtils {
+    namespace Shape {
         /**
          * @return true if the given shape is a TopoDS_Solid
          */
