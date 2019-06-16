@@ -15,7 +15,6 @@ GeomAdaptor_Curve OCCUtils::Curve::FromTrimmedCurve(const Geom_TrimmedCurve &cur
     );
 }
     
-
 double OCCUtils::Curve::Length(const GeomAdaptor_Curve& curve) {
     return GCPnts_AbscissaPoint::Length(curve);
 }
