@@ -100,3 +100,4 @@ On my [blog](https://techoverflow.net) I provide examples of specific usecases f
 * [How to check if two gp_Pnt coincide in OpenCASCADE](https://techoverflow.net/2019/06/15/how-to-check-if-two-gp_pnt-coincide-in-opencascade/)
 * [How to create TopoDS_Edge from to gp_Pnt in OpenCASCADE](https://techoverflow.net/2019/06/15/how-to-create-topods_edge-from-to-gp_pnt-in-opencascade/)
 * [How to create TopoDS_Wire from TopoDS_Edge(s) in OpenCASCADE](https://techoverflow.net/2019/06/14/how-to-create-topods_wire-from-topods_edges-in-opencascade/)
+* [How to convert Geom_TrimmedCurve to GeomAdaptor_Curve in OpenCASCADE](https://techoverflow.net/2019/06/16/how-to-convert-geom_trimmedcurve-to-geomadaptor_curve-in-opencascade/)
