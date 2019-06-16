@@ -5,7 +5,7 @@
 
 using namespace OCCUtils;
 
-TopoDS_Solid OCCUtils::Primitives::MakeBox(
+TopoDS_Solid OCCUtils::Primitive::MakeBox(
     double xSize, double ySize, double zSize,
     int center,
     gp_Pnt origin) {
@@ -26,7 +26,7 @@ TopoDS_Solid OCCUtils::Primitives::MakeBox(
 
 }
 
-TopoDS_Solid OCCUtils::Primitives::MakeCylinder(
+TopoDS_Solid OCCUtils::Primitive::MakeCylinder(
     double diameter, double length,
     Orientation orientation,
     int center,
@@ -50,7 +50,7 @@ TopoDS_Solid OCCUtils::Primitives::MakeCylinder(
     return cyl.Solid();
 }
 
-TopoDS_Solid OCCUtils::Primitives::MakeCube(
+TopoDS_Solid OCCUtils::Primitive::MakeCube(
     double size, int center, gp_Pnt origin) {
     return MakeBox(size, size, size, center, origin);
 }

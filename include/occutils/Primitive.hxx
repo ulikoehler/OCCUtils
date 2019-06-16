@@ -7,7 +7,7 @@
 #include <gp_Pnt.hxx>
 
 namespace OCCUtils {
-    namespace Primitives {
+    namespace Primitive {
         /**
          * Configure how a primitive is centered in the coordinate system
          */
