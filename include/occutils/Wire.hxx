@@ -1,7 +1,9 @@
 #pragma once
 #include <TopoDS_Wire.hxx>
 #include <TopoDS_Edge.hxx>
+#include <TopoDS_Face.hxx>
 #include <vector>
+#include <optional>
 #include <gp_Pnt.hxx>
 #include <occutils/Direction.hxx>
 
@@ -22,9 +24,9 @@ namespace OCCUtils {
          * This is a convenience wrapper to
          * programmatically build wires.
          */
-        class IncrementalWireBuilder {
+        class IncrementalBuilder {
         public:
-            IncrementalWireBuilder(const gp_Pnt& pnt);
+            IncrementalBuilder(const gp_Pnt& pnt);
 
             /**
              * Add a line segment
@@ -41,11 +43,30 @@ namespace OCCUtils {
                 const gp_Dir& normal = Direction::Z());
 
             /**
+             * Get the current direction vector,
+             * i.e. the end direction of the resulting edge.
+             */
+            std::optional<gp_Dir> Direction();
+
+            /**
              * Get the resulting wire.
              */
             TopoDS_Wire Wire();
 
+            /**
+             * Create a pipe from the wire using the given profile.
+             */
+            TopoDS_Shape Pipe(const TopoDS_Face& profile);
+            /**
+             * Create a pipe from the wire using a circular profile
+             * of the given radius.
+             */
+            TopoDS_Shape PipeWithCircularProfile(double radius);
+
+            // Current location
             gp_Pnt current;
+            // Current direction
+            std::optional<gp_Dir> currentDirection;
             std::vector<TopoDS_Edge> edges;
         };
     }
