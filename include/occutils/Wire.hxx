@@ -47,6 +47,10 @@ namespace OCCUtils {
              * i.e. the end direction of the resulting edge.
              */
             std::optional<gp_Dir> Direction();
+            /**
+             * Get the current position
+             */
+            gp_Pnt Location();
 
             /**
              * Get the resulting wire.

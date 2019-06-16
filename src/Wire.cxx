@@ -73,6 +73,10 @@ TopoDS_Wire OCCUtils::Wire::IncrementalBuilder::Wire() {
     return Wire::FromEdges(edges);
 }
 
+gp_Pnt OCCUtils::Wire::IncrementalBuilder::Location() {
+    return gp_Pnt(current); // make copy to avoid modification
+}
+
 /**
  * Create a pipe from the wire using the given profile.
  */
