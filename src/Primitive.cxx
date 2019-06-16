@@ -1,4 +1,4 @@
-#include "occutils/MakePrimitive.hxx"
+#include "occutils/Primitive.hxx"
 #include "occutils/Direction.hxx"
 #include <BRepPrimAPI_MakeBox.hxx>
 #include <BRepPrimAPI_MakeCylinder.hxx>

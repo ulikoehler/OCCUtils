@@ -13,7 +13,7 @@ add_library(occutils SHARED
     src/Pipe.cxx
     src/Curve.cxx
     src/STEPExport.cxx
-    src/MakePrimitive.cxx
+    src/Primitive.cxx
     src/Directions.cxx
     src/Boolean.cxx
     src/ExtendedSTEP.cxx
