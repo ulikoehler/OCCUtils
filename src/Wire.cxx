@@ -58,7 +58,13 @@ void OCCUtils::Wire::IncrementalBuilder::Arc90(
         if(abs(radius - radiusAlt) >= Precision::Confusion()) {
             throw std::invalid_argument("dx/dy/dz does not match centerD...!");
         }
-        edges.emplace_back(Edge::CircleSegment(gp_Ax2(center, normal), radius, current, p2));
+        // Current algorithm: Compute both options,
+        // one is 90° and one is 270°, select the shorter one. 
+        auto option1 = Edge::CircleSegment(gp_Ax2(center, normal), radius, current, p2);
+        auto option2 = Edge::CircleSegment(gp_Ax2(center, normal), radius, p2, current);
+        double length1 = Edge::Length(option1);
+        double length2 = Edge::Length(option2);
+        edges.emplace_back(length1 < length2 ? option1 : option2);
         current = p2;
         currentDirection = resultingDirection;
     }
