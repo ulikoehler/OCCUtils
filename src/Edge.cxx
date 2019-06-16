@@ -40,3 +40,10 @@ TopoDS_Edge OCCUtils::Edge::FullCircle(const gp_Ax2& axis, double radius) {
 double OCCUtils::Edge::Length(const TopoDS_Edge& edge) {
     return Curve::Length(Curve::FromEdge(edge));
 }
+
+TopoDS_Edge OCCUtils::Edge::CircleSegment(
+    const gp_Ax2& axis, double radius,
+    const gp_Pnt& p1, const gp_Pnt& p2) {
+    gp_Circ circ(axis, radius);
+    return BRepBuilderAPI_MakeEdge(circ, p1, p2).Edge();
+}

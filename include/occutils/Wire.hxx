@@ -3,6 +3,7 @@
 #include <TopoDS_Edge.hxx>
 #include <vector>
 #include <gp_Pnt.hxx>
+#include <occutils/Direction.hxx>
 
 namespace OCCUtils {
     namespace Wire {
@@ -29,8 +30,19 @@ namespace OCCUtils {
              * Add a line segment
              */
             void Line(double dx, double dy, double dz);
-            void Arc90(double dx, double dy, double dz);
 
+            /**
+             * ALPHA - API MAY CHANGE!
+             * Create a 90° arc from the current position.
+             */
+            void Arc90(
+                double dx, double dy, double dz,
+                double centerDx, double centerDy, double centerDz,
+                const gp_Dir& normal = Direction::Z());
+
+            /**
+             * Get the resulting wire.
+             */
             TopoDS_Wire Wire();
 
             gp_Pnt current;

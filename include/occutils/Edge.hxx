@@ -36,6 +36,14 @@ namespace OCCUtils {
          * with the circle's normal pointing to axis.Direction().
          */
         TopoDS_Edge FullCircle(const gp_Ax2& axis, double radius=1.0);
+
+        /**
+         * Like FullCircle(), but creates a circle only from
+         * p1 to p2.
+         * Precondition: p1 and p2 must lie on the circle.
+         */
+        TopoDS_Edge CircleSegment(const gp_Ax2& axis, double radius,
+            const gp_Pnt& p1, const gp_Pnt& p2);
         
         /**
          * Get the length of the given edge
