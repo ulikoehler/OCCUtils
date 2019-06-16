@@ -33,5 +33,15 @@ namespace OCCUtils {
          * Length of a curve (by curve handle)
          */
         double Length(const Geom_TrimmedCurve &curve);
+
+        bool IsLine(const GeomAdaptor_Curve& curve);
+        bool IsCircle(const GeomAdaptor_Curve& curve);
+        bool IsEllipse(const GeomAdaptor_Curve& curve);
+        bool IsHyperbola(const GeomAdaptor_Curve& curve);
+        bool IsParabola(const GeomAdaptor_Curve& curve);
+        bool IsBezier(const GeomAdaptor_Curve& curve);
+        bool IsBSpline(const GeomAdaptor_Curve& curve);
+        bool IsOffsetCurve(const GeomAdaptor_Curve& curve);
+        bool IsOther(const GeomAdaptor_Curve& curve);
     }
 }
