@@ -36,5 +36,10 @@ namespace OCCUtils {
          * with the circle's normal pointing to axis.Direction().
          */
         TopoDS_Edge FullCircle(const gp_Ax2& axis, double radius=1.0);
+        
+        /**
+         * Get the length of the given edge
+         */
+        double Length(const TopoDS_Edge& edge);
     }
 }

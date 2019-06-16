@@ -2,6 +2,7 @@
 #include "occutils/Axis.hxx"
 #include "occutils/Point.hxx"
 #include "occutils/Equality.hxx"
+#include "occutils/Curve.hxx"
 #include <Precision.hxx>
 #include <BRepBuilderAPI_MakeEdge.hxx>
 #include <gp_Circ.hxx>
@@ -34,4 +35,8 @@ TopoDS_Edge OCCUtils::Edge::FullCircle(const gp_Pnt& center, const gp_Dir& direc
 
 TopoDS_Edge OCCUtils::Edge::FullCircle(const gp_Ax2& axis, double radius) {
     return BRepBuilderAPI_MakeEdge(gp_Circ(axis, radius)).Edge();
+}
+
+double OCCUtils::Edge::Length(const TopoDS_Edge& edge) {
+    return Curve::Length(Curve::FromEdge(edge));
 }
