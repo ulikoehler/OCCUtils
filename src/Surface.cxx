@@ -3,6 +3,7 @@
 #include <BRepGProp.hxx>
 #include <BRepLib_FindSurface.hxx>
 #include <algorithm>
+#include <sstream>
 #include "occutils/ShapeComponents.hxx"
 
 using namespace std;
@@ -116,4 +117,68 @@ std::vector<OCCUtils::Surfaces::SurfaceInfo> OCCUtils::Surfaces::Filter(const st
         return filt(surf.surface);
     });
     return ret;
+}
+
+void OCCUtils::Surfaces::SurfaceTypeStats::Add(GeomAbs_SurfaceType typ, size_t cnt) {
+    if(count.count(typ) == 0) {
+        count[typ] = cnt;
+    } else {
+        count[typ] = count[typ] + cnt;
+    }
+}
+
+size_t OCCUtils::Surfaces::SurfaceTypeStats::Count(GeomAbs_SurfaceType typ) {
+    if(count.count(typ) == 0) {
+        return 0;
+    } else {
+        return count[typ];
+    }
+}
+
+std::string OCCUtils::Surfaces::SurfaceTypeStats::Summary() {
+    ostringstream ss;
+    ss << "{\n";
+    if (Count(GeomAbs_Plane)) {
+        ss << "\tGeomAbs_Plane = " << Count(GeomAbs_Plane) << '\n';
+    }
+    if (Count(GeomAbs_Cylinder)) {
+        ss << "\tGeomAbs_Cylinder = " << Count(GeomAbs_Cylinder) << '\n';
+    }
+    if (Count(GeomAbs_Cone)) {
+        ss << "\tGeomAbs_Cone = " << Count(GeomAbs_Cone) << '\n';
+    }
+    if (Count(GeomAbs_Sphere)) {
+        ss << "\tGeomAbs_Sphere = " << Count(GeomAbs_Sphere) << '\n';
+    }
+    if (Count(GeomAbs_Torus)) {
+        ss << "\tGeomAbs_Torus = " << Count(GeomAbs_Torus) << '\n';
+    }
+    if (Count(GeomAbs_BezierSurface)) {
+        ss << "\tGeomAbs_BezierSurface = " << Count(GeomAbs_BezierSurface) << '\n';
+    }
+    if (Count(GeomAbs_BSplineSurface)) {
+        ss << "\tGeomAbs_BSplineSurface = " << Count(GeomAbs_BSplineSurface) << '\n';
+    }
+    if (Count(GeomAbs_SurfaceOfRevolution)) {
+        ss << "\tGeomAbs_SurfaceOfRevolution = " << Count(GeomAbs_SurfaceOfRevolution) << '\n';
+    }
+    if (Count(GeomAbs_SurfaceOfExtrusion)) {
+        ss << "\tGeomAbs_SurfaceOfExtrusion = " << Count(GeomAbs_SurfaceOfExtrusion) << '\n';
+    }
+    if (Count(GeomAbs_OffsetSurface)) {
+        ss << "\tGeomAbs_OffsetSurface = " << Count(GeomAbs_OffsetSurface) << '\n';
+    }
+    if (Count(GeomAbs_OtherSurface)) {
+        ss << "\tGeomAbs_OtherSurface = " << Count(GeomAbs_OtherSurface) << '\n';
+    }
+    ss << "}";
+    return ss.str();
+}
+
+OCCUtils::Surfaces::SurfaceTypeStats OCCUtils::Surfaces::Statistics(const std::vector<SurfaceInfo>& surfaces) {
+    SurfaceTypeStats stats;
+    for(const auto& info : surfaces) {
+        stats.Add(info.surface.GetType());
+    }
+    return stats;
 }

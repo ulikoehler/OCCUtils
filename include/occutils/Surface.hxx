@@ -6,6 +6,7 @@
 #include <TopoDS_Face.hxx>
 #include <GeomAdaptor_Surface.hxx>
 #include <vector>
+#include <map>
 #include <functional>
 
 namespace OCCUtils {
@@ -65,5 +66,17 @@ namespace OCCUtils {
          */
         std::vector<SurfaceInfo> Filter(const std::vector<SurfaceInfo>& surfaces,
             const std::function<bool(const GeomAdaptor_Surface& surf)>& filt);
+
+
+        struct SurfaceTypeStats {
+            void Add(GeomAbs_SurfaceType typ, size_t cnt = 1);
+            size_t Count(GeomAbs_SurfaceType typ);
+            // Get a human-readable summary of the stats
+            std::string Summary();
+            // Counts how many time
+            std::map<GeomAbs_SurfaceType, size_t> count;
+        };
+
+        SurfaceTypeStats Statistics(const std::vector<SurfaceInfo>& surfaces);
     }
 }
