@@ -43,7 +43,7 @@ std::vector<OCCUtils::Surfaces::SurfaceInfo> OCCUtils::Surfaces::FromShape(const
         SurfaceInfo info;
         info.face = face;
         info.surface = Surface::FromFace(face);
-        if(info.surface.Surface().IsNull()) { // If we have found the surface
+        if(!info.surface.Surface().IsNull()) { // If we have found the surface
             ret.push_back(info); 
         }
     }
