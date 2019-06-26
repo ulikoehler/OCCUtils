@@ -3,6 +3,7 @@
 #include <BRepGProp.hxx>
 #include <BRepLib_FindSurface.hxx>
 #include <algorithm>
+#include <GeomLProp_SLProps.hxx>
 #include <sstream>
 #include "occutils/ShapeComponents.hxx"
 
@@ -181,4 +182,14 @@ OCCUtils::Surfaces::SurfaceTypeStats OCCUtils::Surfaces::Statistics(const std::v
         stats.Add(info.surface.GetType());
     }
     return stats;
+}
+
+gp_Ax1 OCCUtils::Surface::Normal(const GeomAdaptor_Surface& surf, double u, double v, double precision) {
+    GeomLProp_SLProps props(surf.Surface(), u, v, 1 /* max 1 derivation */, precision);
+    return gp_Ax1(props.Value(), props.Normal());
+}
+
+gp_Dir OCCUtils::Surface::NormalDirection(const GeomAdaptor_Surface& surf, double u, double v, double precision) {
+    GeomLProp_SLProps props(surf.Surface(), u, v, 1 /* max 1 derivation */, precision);
+    return props.Normal();
 }

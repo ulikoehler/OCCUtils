@@ -2,6 +2,8 @@
 /**
  * Utilities for analyzing surfaces
  */
+#include <gp_Ax1.hxx>
+#include <gp_Dir.hxx>
 #include <TopoDS_Shape.hxx>
 #include <TopoDS_Face.hxx>
 #include <GeomAdaptor_Surface.hxx>
@@ -30,6 +32,26 @@ namespace OCCUtils {
          * This is more efficient than computing them individually.
          */
         std::pair<double, gp_Pnt> AreaAndCenterOfMass(const TopoDS_Shape& face);
+
+        /**
+         * Compute the normal of a surface at the given U/V coordinates.
+         * @param surf The surface
+         * @param u The U coordinate
+         * @param v The V coordinate
+         * @param precision Affects computation speed.
+         * @returns The gp_Ax1 of the point on the surface described by U/V coords and the direction
+         */
+        gp_Ax1 Normal(const GeomAdaptor_Surface& surf, double u = 0.0, double v = 0.0, double precision=1e-6);
+
+        /**
+         * Compute the normal direction of a surface at the given U/V coordinates.
+         * @param surf The surface
+         * @param u The U coordinate
+         * @param v The V coordinate
+         * @param precision Affects computation speed.
+         */
+        gp_Dir NormalDirection(const GeomAdaptor_Surface& surf, double u = 0.0, double v = 0.0, double precision=1e-6);
+
 
         bool IsPlane(const GeomAdaptor_Surface& surf);
         bool IsCylinder(const GeomAdaptor_Surface& surf);
@@ -78,5 +100,6 @@ namespace OCCUtils {
         };
 
         SurfaceTypeStats Statistics(const std::vector<SurfaceInfo>& surfaces);
+
     }
 }
