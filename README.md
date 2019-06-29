@@ -102,3 +102,4 @@ On my [blog](https://techoverflow.net) I provide examples of specific usecases f
 * [How to create TopoDS_Wire from TopoDS_Edge(s) in OpenCASCADE](https://techoverflow.net/2019/06/14/how-to-create-topods_wire-from-topods_edges-in-opencascade/)
 * [How to convert Geom_TrimmedCurve to GeomAdaptor_Curve in OpenCASCADE](https://techoverflow.net/2019/06/16/how-to-convert-geom_trimmedcurve-to-geomadaptor_curve-in-opencascade/)
 * [How to compute surface normal in OpenCASCADE](https://techoverflow.net/2019/06/26/how-to-compute-surface-normal-in-opencascade/)
+* [How to compute volume of TopoDS_Shape / TopoDS_Solid in OpenCASCADE](https://techoverflow.net/2019/06/29/how-to-compute-volume-of-topods_shape-topods_solid-in-opencascade/)
