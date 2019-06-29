@@ -29,5 +29,10 @@ namespace OCCUtils {
          * @return true if the given shape is a TopoDS_Vertex
          */
         bool IsVertex(const TopoDS_Shape& shape);
+
+        /**
+         * Compute the volume of the given shape.
+         */
+        double Volume(const TopoDS_Shape& shape);
     }
 }
