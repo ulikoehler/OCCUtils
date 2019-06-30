@@ -106,3 +106,4 @@ On my [blog](https://techoverflow.net) I provide examples of specific usecases f
 * [How to get midpoint/center between points in OpenCASCADE](https://techoverflow.net/2019/06/30/how-to-get-midpoint-center-between-points-in-opencascade/)
 * [How to get gp_Dir orthogonal to two gp_Dirs in OpenCASCADE](https://techoverflow.net/2019/06/30/how-to-get-gp_dir-orthogonal-to-two-gp_dirs-in-opencascade/)
 * [How to check if gp_Ax1 contains gp_Pnt in OpenCASCADE](https://techoverflow.net/2019/06/30/how-to-check-if-gp_ax1-contains-gp_pnt-in-opencascade/)
+* [Computing distance between gp_Pnt and gp_Ax1 in OpenCASCADE](https://techoverflow.net/2019/06/30/computing-distance-between-gp_pnt-and-gp_ax1-in-opencascade/)
