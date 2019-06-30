@@ -1,5 +1,7 @@
 #pragma once
 #include <gp_Pnt.hxx>
+#include <initializer_list>
+#include <vector>
 
 /**
  * Add the coordinates of two points.
@@ -20,5 +22,11 @@ namespace OCCUtils {
          * (0,0,0)
          */
         gp_Pnt Origin();
+
+        /**
+         * Get the point of mean X/Y/Z between the given points
+         */
+        gp_Pnt Middle(const std::initializer_list<gp_Pnt>& points);
+        gp_Pnt Middle(const std::vector<gp_Pnt>& points);
     }
 }
