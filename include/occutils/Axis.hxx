@@ -1,6 +1,7 @@
 #pragma once
 #include <gp_Ax1.hxx>
 #include <gp_Ax2.hxx>
+#include <Precision.hxx>
 
 namespace OCCUtils {
     namespace Ax1
@@ -41,6 +42,12 @@ namespace OCCUtils {
          *  - Direction = negative Z axis
          */
         gp_Ax1 OMinusZ();
+
+        /**
+         * Check if the given axis contains the given point,
+         * i.e. if the distance between the point and the axis is <= tolerance
+         */
+        bool Contains(const gp_Ax1& axis, const gp_Pnt& pnt, double tolerance = Precision::Confusion());
     }
     namespace Ax2 {
         /**
