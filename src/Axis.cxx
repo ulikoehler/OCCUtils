@@ -59,6 +59,6 @@ gp_Ax2 OCCUtils::Ax2::OMinusZ() {
     return gp_Ax2(Point::Origin(), Direction::MinusZ());
 }
 
-bool OCCUtils::Ax1::Contains(const gp_Ax1& axis, const gp_Pnt& pnt, double tolerance) {
-    return gp_Lin(axis).Contains(pnt, Precision::Confusion());
+bool OCCUtils::Axis::Contains(const gp_Ax1& axis, const gp_Pnt& pnt, double tolerance) {
+    return gp_Lin(axis).Contains(pnt, tolerance);
 }

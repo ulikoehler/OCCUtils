@@ -4,6 +4,13 @@
 #include <Precision.hxx>
 
 namespace OCCUtils {
+    namespace Axis {
+        /**
+         * Check if the given axis contains the given point,
+         * i.e. if the distance between the point and the axis is <= tolerance
+         */
+        bool Contains(const gp_Ax1& axis, const gp_Pnt& pnt, double tolerance = Precision::Confusion());
+    }
     namespace Ax1
     {
         /**
@@ -42,12 +49,6 @@ namespace OCCUtils {
          *  - Direction = negative Z axis
          */
         gp_Ax1 OMinusZ();
-
-        /**
-         * Check if the given axis contains the given point,
-         * i.e. if the distance between the point and the axis is <= tolerance
-         */
-        bool Contains(const gp_Ax1& axis, const gp_Pnt& pnt, double tolerance = Precision::Confusion());
     }
     namespace Ax2 {
         /**
