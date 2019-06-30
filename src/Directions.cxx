@@ -24,3 +24,7 @@ gp_Dir OCCUtils::Direction::MinusY() {
 gp_Dir OCCUtils::Direction::MinusZ() {
     return gp_Dir(gp_XYZ(0.0, 0.0, -1.0));
 }
+
+gp_Dir OCCUtils::Direction::Orthogonal(const gp_Dir& a, const gp_Dir& b) {
+    return a.Crossed(b);
+}

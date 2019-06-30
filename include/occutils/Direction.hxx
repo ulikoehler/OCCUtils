@@ -27,5 +27,10 @@ namespace OCCUtils {
          * Get the global -Z axis direction
          */
         gp_Dir MinusZ();
+
+        /**
+         * Get the direction that is orthogonal to both a and b.
+         */
+        gp_Dir Orthogonal(const gp_Dir& a, const gp_Dir& b);
     }
 }
