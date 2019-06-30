@@ -12,7 +12,7 @@ gp_Pnt operator-(const gp_Pnt &a, const gp_Pnt &b){
     return gp_Pnt(a.X() - b.X(), a.Y() - b.Y(), a.Z() - b.Z());
 }
 
-gp_Pnt OCCUtils::Point::Middle(const std::initializer_list<gp_Pnt>& points) {
+gp_Pnt OCCUtils::Point::Midpoint(const std::initializer_list<gp_Pnt>& points) {
     double x = 0.0, y = 0.0, z = 0.0;
     for (const gp_Pnt &pnt : points) {
         x += pnt.X();
@@ -24,7 +24,7 @@ gp_Pnt OCCUtils::Point::Middle(const std::initializer_list<gp_Pnt>& points) {
 
 }
 
-gp_Pnt OCCUtils::Point::Middle(const std::vector<gp_Pnt>& points) {
+gp_Pnt OCCUtils::Point::Midpoint(const std::vector<gp_Pnt>& points) {
     double x = 0.0, y = 0.0, z = 0.0;
     for (const gp_Pnt &pnt : points) {
         x += pnt.X();
@@ -33,5 +33,4 @@ gp_Pnt OCCUtils::Point::Middle(const std::vector<gp_Pnt>& points) {
     }
     size_t size = points.size();
     return gp_Pnt(x / size, y / size, z / size);
-
 }
