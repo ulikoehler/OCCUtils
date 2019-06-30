@@ -1,4 +1,5 @@
 #include "occutils/Point.hxx"
+#include "occutils/Axis.hxx"
 
 gp_Pnt OCCUtils::Point::Origin() {
     return gp_Pnt();
@@ -33,4 +34,8 @@ gp_Pnt OCCUtils::Point::Midpoint(const std::vector<gp_Pnt>& points) {
     }
     size_t size = points.size();
     return gp_Pnt(x / size, y / size, z / size);
+}
+
+double OCCUtils::Point::Distance(const gp_Pnt& pnt, const gp_Ax1& axis) {
+    return Axis::Distance(axis, pnt);
 }

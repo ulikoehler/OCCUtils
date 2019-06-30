@@ -28,5 +28,12 @@ namespace OCCUtils {
          */
         gp_Pnt Midpoint(const std::initializer_list<gp_Pnt>& points);
         gp_Pnt Midpoint(const std::vector<gp_Pnt>& points);
+
+        /**
+         * Get the distance between pnt and axis,
+         * strictly defined as the distance between pnt and the orthogonal
+         * projection of pnt onto axis.
+         */
+        double Distance(const gp_Pnt& pnt, const gp_Ax1& axis);
     }
 }

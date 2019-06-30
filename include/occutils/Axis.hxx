@@ -10,6 +10,13 @@ namespace OCCUtils {
          * i.e. if the distance between the point and the axis is <= tolerance
          */
         bool Contains(const gp_Ax1& axis, const gp_Pnt& pnt, double tolerance = Precision::Confusion());
+
+        /**
+         * Get the distance between axis and pnt,
+         * strictly defined as the distance between pnt and the orthogonal
+         * projection of pnt onto axis.
+         */
+        double Distance(const gp_Ax1& axis, const gp_Pnt& pnt);
     }
     namespace Ax1
     {

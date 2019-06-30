@@ -62,3 +62,7 @@ gp_Ax2 OCCUtils::Ax2::OMinusZ() {
 bool OCCUtils::Axis::Contains(const gp_Ax1& axis, const gp_Pnt& pnt, double tolerance) {
     return gp_Lin(axis).Contains(pnt, tolerance);
 }
+
+double OCCUtils::Axis::Distance(const gp_Ax1& axis, const gp_Pnt& pnt) {
+    return gp_Lin(axis).Distance(pnt);
+}
