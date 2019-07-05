@@ -48,3 +48,18 @@ TopoDS_Shape OCCUtils::Boolean::Cut(const TopTools_ListOfShape& positive, const 
     cut.Build();
     return cut.Shape(); // Raises NotDone if not done.
 }
+
+TopoDS_Shape OCCUtils::Boolean::Cut(const TopoDS_Shape& positive, const TopoDS_Shape& negative) {
+    return Cut(
+        OCCUtils::ListUtils::ToOCCList({positive}),
+        OCCUtils::ListUtils::ToOCCList({negative})
+    );
+}
+
+
+TopoDS_Shape OCCUtils::Boolean::Cut(const TopoDS_Shape& positive, const TopTools_ListOfShape& negative) {
+    return Cut(
+        OCCUtils::ListUtils::ToOCCList({positive}),
+        negative
+    );
+}

@@ -55,7 +55,28 @@ namespace OCCUtils {
          * Boolean subtraction with two lists of arguments.
          * negative is subtracted from positive, i.e. tools is negative, arguments is positive
          */
-        TopoDS_Shape Cut(const TopTools_ListOfShape& positive, const TopTools_ListOfShape& negatve);
+        TopoDS_Shape Cut(const TopTools_ListOfShape& positive, const TopTools_ListOfShape& negative);
+
+        /**
+         * Boolean subtraction with two lists of arguments.
+         * negative is subtracted from positive, i.e. tools is negative, arguments is positive
+         */
+        TopoDS_Shape Cut(const TopoDS_Shape& positive, const TopoDS_Shape& negative);
+
+        /**
+         * Boolean subtraction with two lists of arguments.
+         * negative is subtracted from positive, i.e. tools is negative, arguments is positive
+         */
+        TopoDS_Shape Cut(const TopoDS_Shape& positive, const TopTools_ListOfShape& negative);
+        
+        /**
+         * Boolean subtraction with two lists of arguments.
+         * negative is subtracted from positive, i.e. tools is negative, arguments is positive
+         */
+        template<template<typename, typename> typename Container, typename Allocator>
+        TopoDS_Shape Cut(const TopoDS_Shape& positive, const Container<TopoDS_Shape, Allocator>& negative) {
+            return Cut(OCCUtils::ListUtils::ToOCCList({positive}), OCCUtils::ListUtils::ToOCCList(negative));
+        }
 
         /**
          * Boolean subtraction with two lists of arguments.
