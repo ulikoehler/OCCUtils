@@ -7,10 +7,22 @@
 using namespace OCCUtils;
 
 TopoDS_Shape OCCUtils::Boolean::Fuse(const TopTools_ListOfShape& arguments, const TopTools_ListOfShape& tools) {
-    if(arguments.Size() == 0) {
+    if(arguments.Size() + tools.Size() == 1) {
+        // Return that shape!
+        if(arguments.Size() == 1) {
+            return arguments.First();
+        } else if(tools.Size() == 1) {
+            return tools.First();
+        } else {
+            // Will never happen, just in case of hard issues to provide a hard return path
+            return TopoDS_Shape();
+        }
+    } else if(arguments.Size() + tools.Size() == 0) {
+        // No shape => return no shape
+        return TopoDS_Shape();
+    } else if(arguments.Size() == 0) {
         throw std::invalid_argument("Fuse arguments must have at least one shape!");
-    }
-    if(tools.Size() == 0) {
+    } else if(tools.Size() == 0) {
         throw std::invalid_argument("Fuse tools must have at least one shape!");
     }
     // Configure fuse

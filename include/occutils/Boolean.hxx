@@ -15,14 +15,14 @@ namespace OCCUtils {
 
         /**
          * Fuse two or more shapes in a OCC-style container.
-         * Raises std::invalid_argument if there is only ONE shape
+         * Returns a shape with IsNull() == true if there is no shape
          */
         TopoDS_Shape Fuse(const TopTools_ListOfShape& shapes);
         
         /**
          * Fuse with two lists of arguments.
          * For Fuse() this is equivalent to joining the lists.
-         * Raises std::invalid_argument if there is only ONE shape
+         * Returns a shape with IsNull() == true if there is no shape
          */
         TopoDS_Shape Fuse(const TopTools_ListOfShape& arguments, const TopTools_ListOfShape& tools);
 
