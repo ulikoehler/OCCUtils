@@ -88,3 +88,20 @@ TopoDS_Shape OCCUtils::Boolean::Cut(const std::vector<TopoDS_Face>& positive, co
 TopoDS_Shape OCCUtils::Boolean::Cut(const TopoDS_Face& positive, const std::vector<TopoDS_Face>& negative) {
     return Cut({positive}, Shapes::FromFaces(negative));
 }
+
+
+TopoDS_Shape OCCUtils::Boolean::Fuse(const std::vector<TopoDS_Solid>& shapes) {
+    return Fuse(Shapes::FromSolids(shapes));
+}
+
+TopoDS_Shape OCCUtils::Boolean::Fuse(const std::initializer_list<TopoDS_Solid>& shapes) {
+    return Fuse(Shapes::FromSolids(shapes));
+}
+
+TopoDS_Shape OCCUtils::Boolean::Fuse(const std::vector<TopoDS_Face>& shapes) {
+    return Fuse(Shapes::FromFaces(shapes));
+}
+
+TopoDS_Shape OCCUtils::Boolean::Fuse(const std::initializer_list<TopoDS_Face>& shapes) {
+    return Fuse(Shapes::FromFaces(shapes));
+}

@@ -52,6 +52,11 @@ namespace OCCUtils {
          * Raises std::invalid_argument if there is only ONE shape
          */
         TopoDS_Shape Fuse(const std::initializer_list<TopoDS_Shape>& shapes);
+        TopoDS_Shape Fuse(const std::vector<TopoDS_Solid>& shapes);
+        TopoDS_Shape Fuse(const std::initializer_list<TopoDS_Solid>& shapes);
+        TopoDS_Shape Fuse(const std::vector<TopoDS_Face>& shapes);
+        TopoDS_Shape Fuse(const std::initializer_list<TopoDS_Face>& shapes);
+
 
         /**
          * Boolean subtraction with two lists of arguments.
