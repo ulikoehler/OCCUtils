@@ -80,3 +80,11 @@ TopoDS_Shape OCCUtils::Boolean::Cut(const std::vector<TopoDS_Solid>& positive, c
 TopoDS_Shape OCCUtils::Boolean::Cut(const TopoDS_Solid& positive, const std::vector<TopoDS_Solid>& negative) {
     return Cut({positive}, Shapes::FromSolids(negative));
 }
+
+TopoDS_Shape OCCUtils::Boolean::Cut(const std::vector<TopoDS_Face>& positive, const std::vector<TopoDS_Face>& negative) {
+    return Cut(Shapes::FromFaces(positive), Shapes::FromFaces(negative));
+}
+
+TopoDS_Shape OCCUtils::Boolean::Cut(const TopoDS_Face& positive, const std::vector<TopoDS_Face>& negative) {
+    return Cut({positive}, Shapes::FromFaces(negative));
+}

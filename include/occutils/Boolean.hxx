@@ -3,6 +3,7 @@
  * Boolean operation utilities
  */
 #include <TopoDS_Shape.hxx>
+#include <TopoDS_Face.hxx>
 #include <TopoDS_Solid.hxx>
 #include <TopTools_ListOfShape.hxx>
 #include <vector>
@@ -108,5 +109,19 @@ namespace OCCUtils {
          * tools is subtracted from argument, i.e. tools is negative, arguments is positive
          */
         TopoDS_Shape Cut(const TopoDS_Solid& positive, const std::vector<TopoDS_Solid>& negative);
+
+        /**
+         * Boolean subtraction with two lists of TopoDS_Faces.
+         * This is a common usecase, hence we provide a utility function.
+         * tools is subtracted from argument, i.e. tools is negative, arguments is positive
+         */
+        TopoDS_Shape Cut(const std::vector<TopoDS_Face>& positive, const std::vector<TopoDS_Face>& negative);
+
+        /**
+         * Boolean subtraction with two lists of TopoDS_Faces.
+         * This is a common usecase, hence we provide a utility function.
+         * tools is subtracted from argument, i.e. tools is negative, arguments is positive
+         */
+        TopoDS_Shape Cut(const TopoDS_Face& positive, const std::vector<TopoDS_Face>& negative);
     }
 }
