@@ -42,6 +42,6 @@ namespace OCCUtils {
         /**
          * Convert a solid vector to a shape vector
          */
-        std::vector<TopoDS_Shape> ToShapes(const std::vector<TopoDS_Solid>& solids);
+        std::vector<TopoDS_Shape> FromSolids(const std::vector<TopoDS_Solid>& solids);
     }
 }

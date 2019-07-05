@@ -16,7 +16,7 @@ double OCCUtils::Shape::Volume(const TopoDS_Shape& shape) {
 }
 
 
-std::vector<TopoDS_Shape> OCCUtils::Shapes::ToShapes(const std::vector<TopoDS_Solid>& solids) {
+std::vector<TopoDS_Shape> OCCUtils::Shapes::FromSolids(const std::vector<TopoDS_Solid>& solids) {
     // Create return vector
     std::vector<TopoDS_Shape> ret;
     ret.reserve(solids.size());
