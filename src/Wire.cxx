@@ -112,8 +112,8 @@ TopoDS_Wire OCCUtils::Wire::FromPoints(const std::vector<gp_Pnt>& points, bool c
     BRepLib_MakeWire makeWire;
     for (size_t i = 0; i < points.size() - 1; i++)
     {
-        const gp_Pnt& p1 = points[i];
-        const gp_Pnt& p2 = points[i + 1];
+        const auto& p1 = points[i];
+        const auto& p2 = points[i + 1];
         // Ignore duplicate points
         if (p1 == p2) {
             continue;
@@ -122,7 +122,11 @@ TopoDS_Wire OCCUtils::Wire::FromPoints(const std::vector<gp_Pnt>& points, bool c
     }
     // Close curve if enabled
     if(close) {
-        makeWire.Add(Edge::FromPoints(points[points.size() - 1], points[0]));
+        const auto& p0 = points[0];
+        const auto& plast = points[points.size() - 1];
+        if(p0 != plast) {
+            makeWire.Add(Edge::FromPoints(p0, plast));
+        }
     }
     return makeWire.Wire ();
 }
