@@ -25,6 +25,7 @@ add_library(occutils SHARED
     src/Equality.cxx
     src/Axis.cxx
     src/Point.cxx
+    src/Compound.cxx
 )
 
 #target_include_directories(occutils
