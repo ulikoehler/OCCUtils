@@ -55,6 +55,22 @@ namespace OCCUtils {
             gp_Pnt origin=gp_Pnt());
 
         /**
+         * Make a cone.
+         * @param diameter1 The diameter of the cone at the origin point
+         * @param diameter2 The diameter of the cone opposite to the origin point
+         * @param length The total length of the cone
+         * @param axis Defines both the origin point and the axis of the cone
+         * @param centerLength Whether to center the cone on its length
+         */
+        TopoDS_Solid MakeCone(
+            gp_Ax1 axis,
+            double diameter1,
+            double diameter2,
+            double length,
+            bool centerLength=false
+        );
+
+        /**
          * Make a cylinder that can be centered
          * @param orientation How the cylinder's main axis is oriented
          * @param center A bitwise-OR (|) combination of

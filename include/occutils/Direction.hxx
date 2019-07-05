@@ -1,6 +1,8 @@
 #pragma once
 #include <gp_Dir.hxx>
 
+gp_Vec operator*(const gp_Dir &a, double factor);
+
 namespace OCCUtils {
     namespace Direction {
         /**

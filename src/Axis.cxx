@@ -66,3 +66,11 @@ bool OCCUtils::Axis::Contains(const gp_Ax1& axis, const gp_Pnt& pnt, double tole
 double OCCUtils::Axis::Distance(const gp_Ax1& axis, const gp_Pnt& pnt) {
     return gp_Lin(axis).Distance(pnt);
 }
+
+gp_Ax1 operator+(const gp_Ax1& axis, const gp_Vec& vec) {
+    gp_Ax1 ret(axis.Location() + vec, axis.Direction());
+}
+
+gp_Ax1 operator+(const gp_Ax1& axis, const gp_XYZ& vec) {
+    gp_Ax1 ret(axis.Location() + vec, axis.Direction());
+}

@@ -8,12 +8,16 @@
  * Performs coordinate-wise addition.
  */
 gp_Pnt operator+(const gp_Pnt &a, const gp_Pnt &b);
+gp_Pnt operator+(const gp_Pnt &a, const gp_Vec &b);
+gp_Pnt operator+(const gp_Pnt &a, const gp_XYZ &b);
 
 /**
  * Subtract the coordinates of two points.
  * Performs coordinate-wise subtraction.
  */
 gp_Pnt operator-(const gp_Pnt &a, const gp_Pnt &b);
+gp_Pnt operator-(const gp_Pnt &a, const gp_Vec &b);
+gp_Pnt operator-(const gp_Pnt &a, const gp_XYZ &b);
 
 namespace OCCUtils {
     namespace Point {

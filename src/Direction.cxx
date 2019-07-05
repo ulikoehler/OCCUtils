@@ -1,6 +1,10 @@
 #include "occutils/Direction.hxx"
 #include <gp_XYZ.hxx>
 
+gp_Vec operator*(const gp_Dir &a, double factor) {
+    return gp_Vec(a.X() * factor, a.Y() * factor, a.Z() * factor);
+}
+
 gp_Dir OCCUtils::Direction::X() {
     return gp_Dir(gp_XYZ(1.0, 0.0, 0.0));
 }

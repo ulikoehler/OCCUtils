@@ -1,7 +1,9 @@
 #include "occutils/Primitive.hxx"
 #include "occutils/Direction.hxx"
+#include "occutils/Point.hxx"
 #include <BRepPrimAPI_MakeBox.hxx>
 #include <BRepPrimAPI_MakeCylinder.hxx>
+#include <BRepPrimAPI_MakeCone.hxx>
 
 using namespace OCCUtils;
 
@@ -53,4 +55,23 @@ TopoDS_Solid OCCUtils::Primitive::MakeCylinder(
 TopoDS_Solid OCCUtils::Primitive::MakeCube(
     double size, int center, gp_Pnt origin) {
     return MakeBox(size, size, size, center, origin);
+}
+
+
+TopoDS_Solid OCCUtils::Primitive::MakeCone(
+    gp_Ax1 axis,
+    double diameter1,
+    double diameter2,
+    double length,
+    bool centerLength
+) {
+    BRepPrimAPI_MakeCone builder(
+        gp_Ax2(
+            centerLength ?
+                axis.Location() - axis.Direction() * (length / 2)
+                : axis.Location(),
+            axis.Direction()
+        ),
+        diameter1, diameter2, length);
+    return builder.Solid();
 }

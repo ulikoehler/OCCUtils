@@ -3,6 +3,14 @@
 #include <gp_Ax2.hxx>
 #include <Precision.hxx>
 
+gp_Ax1 operator+(const gp_Ax1& axis, const gp_Vec& vec);
+
+/**
+ * Shifts the origin point of the axis by vec.
+ * The direction is unchanged
+ */
+gp_Ax1 operator+(const gp_Ax1& axis, const gp_XYZ& vec);
+
 namespace OCCUtils {
     namespace Axis {
         /**

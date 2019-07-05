@@ -9,9 +9,26 @@ gp_Pnt operator+(const gp_Pnt &a, const gp_Pnt &b){
     return gp_Pnt(a.X() + b.X(), a.Y() + b.Y(), a.Z() + b.Z());
 }
 
+gp_Pnt operator+(const gp_Pnt &a, const gp_Vec &b){
+    return gp_Pnt(a.X() + b.X(), a.Y() + b.Y(), a.Z() + b.Z());
+}
+
+gp_Pnt operator+(const gp_Pnt &a, const gp_XYZ &b){
+    return gp_Pnt(a.X() + b.X(), a.Y() + b.Y(), a.Z() + b.Z());
+}
+
 gp_Pnt operator-(const gp_Pnt &a, const gp_Pnt &b){
     return gp_Pnt(a.X() - b.X(), a.Y() - b.Y(), a.Z() - b.Z());
 }
+
+gp_Pnt operator-(const gp_Pnt &a, const gp_Vec &b){
+    return gp_Pnt(a.X() - b.X(), a.Y() - b.Y(), a.Z() - b.Z());
+}
+
+gp_Pnt operator-(const gp_Pnt &a, const gp_XYZ &b){
+    return gp_Pnt(a.X() - b.X(), a.Y() - b.Y(), a.Z() - b.Z());
+}
+
 
 gp_Pnt OCCUtils::Point::Midpoint(const std::initializer_list<gp_Pnt>& points) {
     double x = 0.0, y = 0.0, z = 0.0;
