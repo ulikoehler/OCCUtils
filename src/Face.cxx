@@ -42,3 +42,7 @@ std::optional<gp_Dir> OCCUtils::Face::NormalDirection(const TopoDS_Face& face, d
     }
     return Surface::NormalDirection(surface, u, v, precision);
 }
+
+TopoDS_Face OCCUtils::Face::FromPoints(const std::vector<gp_Pnt>& points) {
+    return FromWire(Wire::FromPoints(points, true));
+}

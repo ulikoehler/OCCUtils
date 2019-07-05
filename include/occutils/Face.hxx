@@ -28,9 +28,14 @@ namespace OCCUtils {
         /**
          * Construct an outer wire from the given edges
          * and construct a face from the outer wire.
-         * If wire.IsNull(), then result.IsNull() as well.
          */
         TopoDS_Face FromEdges(const std::vector<TopoDS_Edge>& edges);
+        /**
+         * Construct an outer wire from points, linearly connecting each point to the next.
+         * The last point is automatically connected to the first point, unless they are equal.
+         * Equivalent to calling Face::FromWire(Wire::FromPoints(points, true))
+         */
+        TopoDS_Face FromPoints(const std::vector<gp_Pnt>& points);
 
         /**
          * Compute the normal of a surface at the given U/V coordinates.
