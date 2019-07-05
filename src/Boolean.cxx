@@ -63,3 +63,11 @@ TopoDS_Shape OCCUtils::Boolean::Cut(const TopoDS_Shape& positive, const TopTools
         negative
     );
 }
+
+
+TopoDS_Shape OCCUtils::Boolean::Cut(const TopoDS_Shape& positive, const std::initializer_list<TopoDS_Shape>& negative) {
+    return Cut(
+        OCCUtils::ListUtils::ToOCCList({positive}),
+        OCCUtils::ListUtils::ToOCCList(negative)
+    );
+}
