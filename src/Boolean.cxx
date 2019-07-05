@@ -1,5 +1,6 @@
 #include "occutils/Boolean.hxx"
 #include "occutils/ListUtils.hxx"
+#include <BRepAlgoAPI_Cut.hxx>
 #include <BRepAlgoAPI_Fuse.hxx>
 
 using namespace OCCUtils;
@@ -30,4 +31,20 @@ TopoDS_Shape OCCUtils::Boolean::Fuse(const TopTools_ListOfShape& shapes) {
 
 TopoDS_Shape OCCUtils::Boolean::Fuse(const std::initializer_list<TopoDS_Shape>& shapes) {
     return Fuse(OCCUtils::ListUtils::ToOCCList(shapes));
+}
+
+TopoDS_Shape OCCUtils::Boolean::Cut(const TopTools_ListOfShape& positive, const TopTools_ListOfShape& negative) {
+    if(positive.Size() == 0) {
+        throw std::invalid_argument("Fuse positive must have at least one shape!");
+    }
+    if(negative.Size() == 0) {
+        throw std::invalid_argument("Fuse negative must have at least one shape!");
+    }
+    // Configure fuse
+    BRepAlgoAPI_Cut cut;
+    cut.SetArguments(positive);
+    cut.SetTools(negative);
+    // Run cut
+    cut.Build();
+    return cut.Shape(); // Raises NotDone if not done.
 }

@@ -50,5 +50,21 @@ namespace OCCUtils {
          * Raises std::invalid_argument if there is only ONE shape
          */
         TopoDS_Shape Fuse(const std::initializer_list<TopoDS_Shape>& shapes);
+
+        /**
+         * Boolean subtraction with two lists of arguments.
+         * negative is subtracted from positive, i.e. tools is negative, arguments is positive
+         */
+        TopoDS_Shape Cut(const TopTools_ListOfShape& positive, const TopTools_ListOfShape& negatve);
+
+        /**
+         * Boolean subtraction with two lists of arguments.
+         * tools is subtracted from argument, i.e. tools is negative, arguments is positive
+         */
+        template<template<typename, typename> typename Container, typename Allocator1, typename Allocator2>
+        TopoDS_Shape Cut(const Container<TopoDS_Shape, Allocator1>& positive, const Container<TopoDS_Shape, Allocator2>& negative) {
+            return Cut(OCCUtils::ListUtils::ToOCCList(positive), OCCUtils::ListUtils::ToOCCList(negative));
+        }
+
     }
 }
