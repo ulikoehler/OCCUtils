@@ -1,5 +1,6 @@
 #include "occutils/Boolean.hxx"
 #include "occutils/ListUtils.hxx"
+#include "occutils/Shape.hxx"
 #include <BRepAlgoAPI_Cut.hxx>
 #include <BRepAlgoAPI_Fuse.hxx>
 
@@ -70,4 +71,12 @@ TopoDS_Shape OCCUtils::Boolean::Cut(const TopoDS_Shape& positive, const std::ini
         OCCUtils::ListUtils::ToOCCList({positive}),
         OCCUtils::ListUtils::ToOCCList(negative)
     );
+}
+
+TopoDS_Shape OCCUtils::Boolean::Cut(const std::vector<TopoDS_Solid>& positive, const std::vector<TopoDS_Solid>& negative) {
+    return Cut(Shapes::FromSolids(positive), Shapes::FromSolids(negative));
+}
+
+TopoDS_Shape OCCUtils::Boolean::Cut(const TopoDS_Solid& positive, const std::vector<TopoDS_Solid>& negative) {
+    return Cut({positive}, Shapes::FromSolids(negative));
 }
