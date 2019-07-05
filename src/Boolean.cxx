@@ -51,7 +51,8 @@ TopoDS_Shape OCCUtils::Boolean::Cut(const TopTools_ListOfShape& positive, const 
         throw std::invalid_argument("Cut positive must have at least one shape!");
     }
     if(negative.Size() == 0) {
-        throw std::invalid_argument("Cut negative must have at least one shape!");
+        // Just fuse positive
+        return Fuse(positive);
     }
     // Configure fuse
     BRepAlgoAPI_Cut cut;
