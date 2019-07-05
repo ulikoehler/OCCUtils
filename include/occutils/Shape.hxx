@@ -3,6 +3,7 @@
  * Utilities for dissecting shapes into their components.
  */
 #include <TopoDS_Shape.hxx>
+#include <TopoDS_Solid.hxx>
 #include <TopTools_ListOfShape.hxx>
 #include <initializer_list>
 #include <vector>
@@ -34,5 +35,13 @@ namespace OCCUtils {
          * Compute the volume of the given shape.
          */
         double Volume(const TopoDS_Shape& shape);
+    }
+
+
+    namespace Shapes {
+        /**
+         * Convert a solid vector to a shape vector
+         */
+        std::vector<TopoDS_Shape> ToShapes(const std::vector<TopoDS_Solid>& solids);
     }
 }
