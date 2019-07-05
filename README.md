@@ -109,3 +109,4 @@ On my [blog](https://techoverflow.net) I provide examples of specific usecases f
 * [Computing distance between gp_Pnt and gp_Ax1 in OpenCASCADE](https://techoverflow.net/2019/06/30/computing-distance-between-gp_pnt-and-gp_ax1-in-opencascade/)
 * [Converting vector of TopoDS_Face to vector of TopoDS_Shape in OpenCASCADE](https://techoverflow.net/2019/07/05/converting-vector-of-topods_face-to-vector-of-topods_shape-in-opencascade/)
 * [Converting vector of TopoDS_Solid to vector of TopoDS_Shape in OpenCASCADE](https://techoverflow.net/2019/07/05/converting-vector-of-topods_solid-to-vector-of-topods_shape-in-opencascade/)
+* [How to make TopoDS_Face from gp_Pnts](https://techoverflow.net/2019/07/05/how-to-make-topods_face-from-gp_pnts/)
