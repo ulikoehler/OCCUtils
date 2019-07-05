@@ -3,8 +3,12 @@
 #include "occutils/Pipe.hxx"
 #include "occutils/Face.hxx"
 #include "occutils/Point.hxx"
+#include "occutils/Equality.hxx"
+#include <BRepLib_MakeWire.hxx>
 #include <BRepLib_MakeWire.hxx>
 #include <stdexcept>
+
+using namespace OCCUtils;
 
 TopoDS_Wire OCCUtils::Wire::FromEdges(const std::initializer_list<TopoDS_Edge>& edges) {
     BRepLib_MakeWire wireMaker;
@@ -97,4 +101,28 @@ std::optional<gp_Dir> OCCUtils::Wire::IncrementalBuilder::Direction() {
     } else {
         return std::nullopt;
     }
+}
+
+TopoDS_Wire OCCUtils::Wire::FromPoints(const std::vector<gp_Pnt>& points, bool close) {
+    if (points.size() < 2) {
+        return TopoDS_Wire ();
+    }
+    // Build directly without making a vector of edges
+    // This is likely slightly more efficient
+    BRepLib_MakeWire makeWire;
+    for (size_t i = 0; i < points.size() - 1; i++)
+    {
+        const gp_Pnt& p1 = points[i];
+        const gp_Pnt& p2 = points[i + 1];
+        // Ignore duplicate points
+        if (p1 == p2) {
+            continue;
+        }
+        makeWire.Add(Edge::FromPoints(p1, p2));
+    }
+    // Close curve if enabled
+    if(close) {
+        makeWire.Add(Edge::FromPoints(points[points.size() - 1], points[0]));
+    }
+    return makeWire.Wire ();
 }

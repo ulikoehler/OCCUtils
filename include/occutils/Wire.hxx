@@ -18,6 +18,12 @@ namespace OCCUtils {
         TopoDS_Wire FromEdges(const std::vector<TopoDS_Edge>& edges);
 
         /**
+         * Make a TopoDS_Wire by linearly connecting all of the given points in order,
+         * @param close If set to true, connect the last point to the first point.
+         */
+        TopoDS_Wire FromPoints(const std::vector<gp_Pnt>& edges, bool close=false);
+
+        /**
          * Build a wire incrementally,
          * uses relative coordinates.
          * 
