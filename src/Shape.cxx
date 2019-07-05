@@ -15,12 +15,23 @@ double OCCUtils::Shape::Volume(const TopoDS_Shape& shape) {
     return gprops.Mass();
 }
 
-
-std::vector<TopoDS_Shape> OCCUtils::Shapes::FromSolids(const std::vector<TopoDS_Solid>& solids) {
+/**
+ * Internal converter function
+ */
+template<typename T>
+std::vector<TopoDS_Shape> _ToShapes(const std::vector<T>& elems) {
     // Create return vector
     std::vector<TopoDS_Shape> ret;
-    ret.reserve(solids.size());
+    ret.reserve(elems.size());
     // Do the copying
-    std::copy(solids.begin(), solids.end(), std::back_inserter(ret));
+    std::copy(elems.begin(), elems.end(), std::back_inserter(ret));
     return ret;
+}
+
+std::vector<TopoDS_Shape> OCCUtils::Shapes::FromSolids(const std::vector<TopoDS_Solid>& solids) {
+    return _ToShapes(solids);
+}
+
+std::vector<TopoDS_Shape> OCCUtils::Shapes::FromFaces(const std::vector<TopoDS_Face>& faces) {
+    return _ToShapes(faces);
 }

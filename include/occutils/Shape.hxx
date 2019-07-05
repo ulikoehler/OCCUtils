@@ -4,6 +4,7 @@
  */
 #include <TopoDS_Shape.hxx>
 #include <TopoDS_Solid.hxx>
+#include <TopoDS_Face.hxx>
 #include <TopTools_ListOfShape.hxx>
 #include <initializer_list>
 #include <vector>
@@ -43,5 +44,10 @@ namespace OCCUtils {
          * Convert a solid vector to a shape vector
          */
         std::vector<TopoDS_Shape> FromSolids(const std::vector<TopoDS_Solid>& solids);
+
+        /**
+         * Convert a face vector to a shape vector
+         */
+        std::vector<TopoDS_Shape> FromFaces(const std::vector<TopoDS_Face>& faces);
     }
 }
