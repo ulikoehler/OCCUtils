@@ -80,7 +80,7 @@ namespace OCCUtils {
         /**
          * Filter surfaces by type
          */
-        std::vector<SurfaceInfo> Filter(const std::vector<SurfaceInfo>& surfaces,
+        std::vector<SurfaceInfo> Only(const std::vector<SurfaceInfo>& surfaces,
             GeomAbs_SurfaceType type);
 
         /**

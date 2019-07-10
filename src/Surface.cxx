@@ -98,7 +98,7 @@ bool OCCUtils::Surface::IsOtherSurface(const GeomAdaptor_Surface& surf) {
 }
 
 
-std::vector<OCCUtils::Surfaces::SurfaceInfo> OCCUtils::Surfaces::Filter(const std::vector<SurfaceInfo>& surfaces,
+std::vector<OCCUtils::Surfaces::SurfaceInfo> OCCUtils::Surfaces::Only(const std::vector<SurfaceInfo>& surfaces,
     GeomAbs_SurfaceType type) {
     return Filter(surfaces, [&](const GeomAdaptor_Surface& surf) {
         return surf.GetType() == type;
