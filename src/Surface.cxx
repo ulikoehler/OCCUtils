@@ -209,3 +209,20 @@ gp_Pnt OCCUtils::Surface::PointAt(const GeomAdaptor_Surface& surf, const gp_Pnt2
 gp_Pnt OCCUtils::Surface::PointAt(const GeomAdaptor_Surface& surf, const gp_XY& uv) {
     return surf.Value(uv.X(), uv.Y());
 }
+
+vector<gp_XY> OCCUtils::Surface::UniformSampleUVLocations(const GeomAdaptor_Surface& surf, size_t uSamples, size_t vSamples) {
+    double u0 = surf.FirstUParameter();
+    double v0 = surf.FirstVParameter();
+    
+    double uInterval = (surf.LastUParameter() - u0) / (uSamples - 1); // -1: include both end points
+    double vInterval = (surf.LastVParameter() - v0) / (vSamples - 1); // -1: include both end points
+
+    vector<gp_XY> ret;
+    ret.reserve(uSamples * vSamples);
+    for (size_t u = 0; u < uSamples; u++) {
+        for (size_t v = 0; v < vSamples; v++) {
+            ret.emplace_back(u0 + uInterval * u, v0 + vInterval * v);
+        }
+    }
+    return ret;
+}

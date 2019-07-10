@@ -87,6 +87,14 @@ namespace OCCUtils {
          */
         gp_Pnt PointAt(const GeomAdaptor_Surface& surf, const gp_XY& uv);
 
+        /**
+         * Given a surface, creates a NxM uniformly spaces U/V grid between Umin/Umax and Vmin/Vmax.
+         * Umin/Umax and Vmin/Umax are included and represent the first/last sample point.
+         * The returned gp_XY coordinates shall be interpreted as U/V coordinates!
+         */
+        std::vector<gp_XY> UniformSampleUVLocations(
+            const GeomAdaptor_Surface& surf, size_t uSamples=10, size_t vSamples=10);
+
         //TODO These are not implemented yet!
         /**
          * Sample the slope on the given surface at the given U/V coordinates.
