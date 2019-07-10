@@ -201,3 +201,11 @@ gp_Dir OCCUtils::Surface::NormalDirection(const GeomAdaptor_Surface& surf, doubl
 gp_Pnt OCCUtils::Surface::PointAt(const GeomAdaptor_Surface& surf, double u, double v) {
     return surf.Value(u, v);
 }
+
+gp_Pnt OCCUtils::Surface::PointAt(const GeomAdaptor_Surface& surf, const gp_Pnt2d& uv) {
+    return surf.Value(uv.X(), uv.Y());
+}
+
+gp_Pnt OCCUtils::Surface::PointAt(const GeomAdaptor_Surface& surf, const gp_XY& uv) {
+    return surf.Value(uv.X(), uv.Y());
+}

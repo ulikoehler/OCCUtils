@@ -3,6 +3,8 @@
  * Utilities for analyzing surfaces
  */
 #include <gp_Ax1.hxx>
+#include <gp_XY.hxx>
+#include <gp_Pnt2d.hxx>
 #include <gp_Dir.hxx>
 #include <TopoDS_Shape.hxx>
 #include <TopoDS_Face.hxx>
@@ -70,6 +72,20 @@ namespace OCCUtils {
          * The point represents the 0th derivative.
          */
         gp_Pnt PointAt(const GeomAdaptor_Surface& surf, double u = 0.0, double v = 0.0);
+        /**
+         * Sample the point on the given surface at the given U/V coordinates.
+         * The X coord of the gp_Pnt2d is interpreted as U whereas the Y coord of the gp_Pnt2d
+         * is interpreted as V.
+         * The point represents the 0th derivative.
+         */
+        gp_Pnt PointAt(const GeomAdaptor_Surface& surf, const gp_Pnt2d& uv);
+        /**
+         * Sample the point on the given surface at the given U/V coordinates.
+         * The X coord of the gp_XY is interpreted as U whereas the Y coord of the gp_XY
+         * is interpreted as V.
+         * The point represents the 0th derivative.
+         */
+        gp_Pnt PointAt(const GeomAdaptor_Surface& surf, const gp_XY& uv);
 
         //TODO These are not implemented yet!
         /**
