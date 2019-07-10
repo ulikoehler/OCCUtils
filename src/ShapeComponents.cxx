@@ -1,73 +1,78 @@
 #include "occutils/ShapeComponents.hxx"
 #include "occutils/Exceptions.hxx"
-#include <TopTools_IndexedMapOfShape.hxx>
-#include <TopExp.hxx>
+#include <TopExp_Explorer.hxx>
 #include <BRep_Tool.hxx>
 #include <TopoDS.hxx>
 
 std::vector<TopoDS_Solid> OCCUtils::ShapeComponents::AllSolidsWithin(const TopoDS_Shape& shape) {
-    TopTools_IndexedMapOfShape solidShapes;
-    TopExp::MapShapes (shape, TopAbs_SOLID, solidShapes);
-
     std::vector<TopoDS_Solid> solids;
-    for (int i = 1; i <= solidShapes.Extent (); i++) {
-        solids.push_back (TopoDS::Solid (solidShapes (i)));
+    for (TopExp_Explorer solidExplorer(shape, TopAbs_SOLID); solidExplorer.More(); solidExplorer.Next()) {
+        const auto &face = TopoDS::Solid(solidExplorer.Current());
+        if (face.IsNull()) {
+            continue;
+        }
+        solids.push_back(face);
     }
     return solids;
 }
 
 std::vector<TopoDS_Face> OCCUtils::ShapeComponents::AllFacesWithin(const TopoDS_Shape& shape) {
-    TopTools_IndexedMapOfShape faceShapes;
-    TopExp::MapShapes (shape, TopAbs_FACE, faceShapes);
-
     std::vector<TopoDS_Face> faces;
-    for (int i = 1; i <= faceShapes.Extent (); i++) {
-        faces.push_back (TopoDS::Face (faceShapes (i)));
+    for (TopExp_Explorer faceExplorer(shape, TopAbs_FACE); faceExplorer.More(); faceExplorer.Next()) {
+        const auto &face = TopoDS::Face(faceExplorer.Current());
+        if (face.IsNull()) {
+            continue;
+        }
+        faces.push_back(face);
     }
     return faces;
 }
 
 std::vector<TopoDS_Edge> OCCUtils::ShapeComponents::AllEdgesWithin(const TopoDS_Shape& shape) {
-    TopTools_IndexedMapOfShape edgeShapes;
-    TopExp::MapShapes (shape, TopAbs_EDGE, edgeShapes);
-
     std::vector<TopoDS_Edge> edges;
-    for (int i = 1; i <= edgeShapes.Extent (); i++)
-        edges.push_back (TopoDS::Edge (edgeShapes (i)));
-
+    for (TopExp_Explorer edgeExplorer(shape, TopAbs_EDGE); edgeExplorer.More(); edgeExplorer.Next()) {
+        const auto &edge = TopoDS::Edge(edgeExplorer.Current());
+        if (edge.IsNull()) {
+            continue;
+        }
+        edges.push_back(edge);
+    }
     return edges;
 }
 
 std::vector<TopoDS_Wire> OCCUtils::ShapeComponents::AllWiresWithin(const TopoDS_Shape& shape) {
-    TopTools_IndexedMapOfShape wireShapes;
-    TopExp::MapShapes (shape, TopAbs_WIRE, wireShapes);
-
     std::vector<TopoDS_Wire> wires;
-    for (int i = 1; i <= wireShapes.Extent (); i++) {
-        wires.push_back (TopoDS::Wire (wireShapes (i)));
+    for (TopExp_Explorer wireExplorer(shape, TopAbs_WIRE); wireExplorer.More(); wireExplorer.Next()) {
+        const auto &wire = TopoDS::Wire(wireExplorer.Current());
+        if (wire.IsNull()) {
+            continue;
+        }
+        wires.push_back(wire);
     }
     return wires;
 }
 
 std::vector<TopoDS_Vertex> OCCUtils::ShapeComponents::AllVerticesWithin(const TopoDS_Shape& shape) {
-    TopTools_IndexedMapOfShape vertexShapes;
-    TopExp::MapShapes (shape, TopAbs_VERTEX, vertexShapes);
-
-    std::vector<TopoDS_Vertex> vertices;
-    for (int i = 1; i <= vertexShapes.Extent (); i++) {
-        vertices.push_back (TopoDS::Vertex (vertexShapes (i)));
+    std::vector<TopoDS_Vertex> wires;
+    for (TopExp_Explorer vertexExplorer(shape, TopAbs_VERTEX); vertexExplorer.More(); vertexExplorer.Next()) {
+        const auto &vertex = TopoDS::Vertex(vertexExplorer.Current());
+        if (vertex.IsNull()) {
+            continue;
+        }
+        wires.push_back(vertex);
     }
-    return vertices;
+    return wires;
 }
 
 std::vector<gp_Pnt> OCCUtils::ShapeComponents::AllVertexCoordinatesWithin(const TopoDS_Shape& shape) {
-    TopTools_IndexedMapOfShape vertexShapes;
-    TopExp::MapShapes (shape, TopAbs_VERTEX, vertexShapes);
 
     std::vector<gp_Pnt> vertices;
-    for (int i = 1; i <= vertexShapes.Extent (); i++) {
-        const TopoDS_Vertex vertex = TopoDS::Vertex (vertexShapes (i));
-        vertices.emplace_back (BRep_Tool::Pnt(vertex));
+    for (TopExp_Explorer vertexExplorer(shape, TopAbs_VERTEX); vertexExplorer.More(); vertexExplorer.Next()) {
+        const auto &vertex = TopoDS::Vertex(vertexExplorer.Current());
+        if (vertex.IsNull()) {
+            continue;
+        }
+        vertices.push_back(BRep_Tool::Pnt(vertex));
     }
     return vertices;
 }
