@@ -3,6 +3,7 @@
 #include <Geom_Curve.hxx>
 #include <Geom_TrimmedCurve.hxx>
 #include <TopoDS_Edge.hxx>
+#include <functional>
 
 namespace OCCUtils {
     namespace Curve {
@@ -43,5 +44,18 @@ namespace OCCUtils {
         bool IsBSpline(const GeomAdaptor_Curve& curve);
         bool IsOffsetCurve(const GeomAdaptor_Curve& curve);
         bool IsOther(const GeomAdaptor_Curve& curve);
+    }
+    namespace Curves {
+        /**
+         * Filter a list of curves: Get only curves that match the given type
+         */
+        std::vector<GeomAdaptor_Curve> Only(const std::vector<GeomAdaptor_Curve>& curves,
+            GeomAbs_CurveType type);
+
+        /**
+         * Filter a list of curves: Get only curves for which the given predicate returns true
+         */
+        std::vector<GeomAdaptor_Curve> Filter(const std::vector<GeomAdaptor_Curve>& curves,
+            std::function<bool(const GeomAdaptor_Curve& curve)> predicate);
     }
 }
