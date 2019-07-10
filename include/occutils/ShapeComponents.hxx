@@ -18,26 +18,31 @@ namespace OCCUtils {
          * (not including the shape itself, if it is a solid)
          */
         std::vector<TopoDS_Solid> AllSolidsWithin(const TopoDS_Shape& shape);
+        std::vector<TopoDS_Solid> AllSolidsWithin(const std::vector<TopoDS_Shape>& shapes);
         /**
          * Get all faces in a given shape
          * (not including the shape itself, if it is a face)
          */
         std::vector<TopoDS_Face> AllFacesWithin(const TopoDS_Shape& shape);
+        std::vector<TopoDS_Face> AllFacesWithin(const std::vector<TopoDS_Shape>& shapes);
         /**
          * Get all edges in a given shape
          * (not including the shape itself, if it is an edge)
          */
         std::vector<TopoDS_Edge> AllEdgesWithin(const TopoDS_Shape& shape);
+        std::vector<TopoDS_Edge> AllEdgesWithin(const std::vector<TopoDS_Shape>& shapes);
         /**
          * Get all wires in a given shape
          * (not including the shape itself, if it is a wire)
          */
         std::vector<TopoDS_Wire> AllWiresWithin(const TopoDS_Shape& shape);
+        std::vector<TopoDS_Wire> AllWiresWithin(const std::vector<TopoDS_Shape>& shapes);
         /**
          * Get all vertices in a given shape
          * (not including the shape itself, if it is a vertex)
          */
         std::vector<TopoDS_Vertex> AllVerticesWithin(const TopoDS_Shape& shape);
+        std::vector<TopoDS_Vertex> AllVerticesWithin(const std::vector<TopoDS_Shape>& shapes);
         /**
          * Get all vertex coordinates in a given shape.
          * Like AllVerticesWithin() but converts the TopoDS_Vertex instances
@@ -45,6 +50,7 @@ namespace OCCUtils {
          * (not including the shape itself, if it is a vertex)
          */
         std::vector<gp_Pnt> AllVertexCoordinatesWithin(const TopoDS_Shape& shape);
+        std::vector<gp_Pnt> AllVertexCoordinatesWithin(const std::vector<TopoDS_Shape>& shapes);
 
         /**
          * If [shape] is a solid, return shape.

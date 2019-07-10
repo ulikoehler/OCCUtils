@@ -16,6 +16,20 @@ std::vector<TopoDS_Solid> OCCUtils::ShapeComponents::AllSolidsWithin(const TopoD
     return solids;
 }
 
+std::vector<TopoDS_Solid> OCCUtils::ShapeComponents::AllSolidsWithin(const std::vector<TopoDS_Shape>& shapes) {
+    std::vector<TopoDS_Solid> solids;
+    for(const auto& shape : shapes) {
+        for (TopExp_Explorer solidExplorer(shape, TopAbs_SOLID); solidExplorer.More(); solidExplorer.Next()) {
+            const auto &face = TopoDS::Solid(solidExplorer.Current());
+            if (face.IsNull()) {
+                continue;
+            }
+            solids.push_back(face);
+        }
+    }
+    return solids;
+}
+
 std::vector<TopoDS_Face> OCCUtils::ShapeComponents::AllFacesWithin(const TopoDS_Shape& shape) {
     std::vector<TopoDS_Face> faces;
     for (TopExp_Explorer faceExplorer(shape, TopAbs_FACE); faceExplorer.More(); faceExplorer.Next()) {
@@ -24,6 +38,20 @@ std::vector<TopoDS_Face> OCCUtils::ShapeComponents::AllFacesWithin(const TopoDS_
             continue;
         }
         faces.push_back(face);
+    }
+    return faces;
+}
+
+std::vector<TopoDS_Face> OCCUtils::ShapeComponents::AllFacesWithin(const std::vector<TopoDS_Shape>& shapes) {
+    std::vector<TopoDS_Face> faces;
+    for(const auto& shape : shapes) {
+        for (TopExp_Explorer faceExplorer(shape, TopAbs_FACE); faceExplorer.More(); faceExplorer.Next()) {
+            const auto &face = TopoDS::Face(faceExplorer.Current());
+            if (face.IsNull()) {
+                continue;
+            }
+            faces.push_back(face);
+        }
     }
     return faces;
 }
@@ -40,6 +68,21 @@ std::vector<TopoDS_Edge> OCCUtils::ShapeComponents::AllEdgesWithin(const TopoDS_
     return edges;
 }
 
+std::vector<TopoDS_Edge> OCCUtils::ShapeComponents::AllEdgesWithin(const std::vector<TopoDS_Shape>& shapes) {
+
+    std::vector<TopoDS_Edge> edges;
+    for(const auto& shape : shapes) {
+        for (TopExp_Explorer edgeExplorer(shape, TopAbs_EDGE); edgeExplorer.More(); edgeExplorer.Next()) {
+            const auto &edge = TopoDS::Edge(edgeExplorer.Current());
+            if (edge.IsNull()) {
+                continue;
+            }
+            edges.push_back(edge);
+        }
+    }
+    return edges;
+}
+
 std::vector<TopoDS_Wire> OCCUtils::ShapeComponents::AllWiresWithin(const TopoDS_Shape& shape) {
     std::vector<TopoDS_Wire> wires;
     for (TopExp_Explorer wireExplorer(shape, TopAbs_WIRE); wireExplorer.More(); wireExplorer.Next()) {
@@ -48,6 +91,20 @@ std::vector<TopoDS_Wire> OCCUtils::ShapeComponents::AllWiresWithin(const TopoDS_
             continue;
         }
         wires.push_back(wire);
+    }
+    return wires;
+}
+
+std::vector<TopoDS_Wire> OCCUtils::ShapeComponents::AllWiresWithin(const std::vector<TopoDS_Shape>& shapes) {
+    std::vector<TopoDS_Wire> wires;
+    for(const auto& shape : shapes) {
+        for (TopExp_Explorer wireExplorer(shape, TopAbs_WIRE); wireExplorer.More(); wireExplorer.Next()) {
+            const auto &wire = TopoDS::Wire(wireExplorer.Current());
+            if (wire.IsNull()) {
+                continue;
+            }
+            wires.push_back(wire);
+        }
     }
     return wires;
 }
@@ -64,8 +121,22 @@ std::vector<TopoDS_Vertex> OCCUtils::ShapeComponents::AllVerticesWithin(const To
     return wires;
 }
 
-std::vector<gp_Pnt> OCCUtils::ShapeComponents::AllVertexCoordinatesWithin(const TopoDS_Shape& shape) {
+std::vector<TopoDS_Vertex> OCCUtils::ShapeComponents::AllVerticesWithin(const std::vector<TopoDS_Shape>& shapes) {
+    std::vector<TopoDS_Vertex> wires;
+    for(const auto& shape : shapes) {
+        for (TopExp_Explorer vertexExplorer(shape, TopAbs_VERTEX); vertexExplorer.More(); vertexExplorer.Next()) {
+            const auto &vertex = TopoDS::Vertex(vertexExplorer.Current());
+            if (vertex.IsNull()) {
+                continue;
+            }
+            wires.push_back(vertex);
+        }
+    }
+    return wires;
 
+}
+
+std::vector<gp_Pnt> OCCUtils::ShapeComponents::AllVertexCoordinatesWithin(const TopoDS_Shape& shape) {
     std::vector<gp_Pnt> vertices;
     for (TopExp_Explorer vertexExplorer(shape, TopAbs_VERTEX); vertexExplorer.More(); vertexExplorer.Next()) {
         const auto &vertex = TopoDS::Vertex(vertexExplorer.Current());
@@ -75,6 +146,21 @@ std::vector<gp_Pnt> OCCUtils::ShapeComponents::AllVertexCoordinatesWithin(const 
         vertices.push_back(BRep_Tool::Pnt(vertex));
     }
     return vertices;
+}
+
+std::vector<gp_Pnt> OCCUtils::ShapeComponents::AllVertexCoordinatesWithin(const std::vector<TopoDS_Shape>& shapes) {
+    std::vector<gp_Pnt> vertices;
+    for(const auto& shape : shapes) {
+        for (TopExp_Explorer vertexExplorer(shape, TopAbs_VERTEX); vertexExplorer.More(); vertexExplorer.Next()) {
+            const auto &vertex = TopoDS::Vertex(vertexExplorer.Current());
+            if (vertex.IsNull()) {
+                continue;
+            }
+            vertices.push_back(BRep_Tool::Pnt(vertex));
+        }
+    }
+    return vertices;
+
 }
 
 std::optional<TopoDS_Solid> OCCUtils::ShapeComponents::TryGetSingleSolid (const TopoDS_Shape& shape) {
