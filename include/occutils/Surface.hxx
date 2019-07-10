@@ -44,6 +44,8 @@ namespace OCCUtils {
          * @returns The gp_Ax1 of the point on the surface described by U/V coords and the direction
          */
         gp_Ax1 Normal(const GeomAdaptor_Surface& surf, double u = 0.0, double v = 0.0, double precision=1e-6);
+        gp_Ax1 Normal(const GeomAdaptor_Surface& surf, const gp_Pnt2d& uv, double precision=1e-6);
+        gp_Ax1 Normal(const GeomAdaptor_Surface& surf, const gp_XY& uv, double precision=1e-6);
 
         /**
          * Compute the normal direction of a surface at the given U/V coordinates.

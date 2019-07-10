@@ -184,6 +184,14 @@ OCCUtils::Surfaces::SurfaceTypeStats OCCUtils::Surfaces::Statistics(const std::v
     return stats;
 }
 
+gp_Ax1 OCCUtils::Surface::Normal(const GeomAdaptor_Surface& surf, const gp_Pnt2d& uv, double precision) {
+    return Normal(surf, uv.X(), uv.Y(), precision);
+}
+
+gp_Ax1 OCCUtils::Surface::Normal(const GeomAdaptor_Surface& surf, const gp_XY& uv, double precision) {
+    return Normal(surf, uv.X(), uv.Y(), precision);
+}
+
 gp_Ax1 OCCUtils::Surface::Normal(const GeomAdaptor_Surface& surf, double u, double v, double precision) {
     GeomLProp_SLProps props(surf.Surface(), u, v, 1 /* max 1 derivation */, precision);
     return gp_Ax1(props.Value(), props.Normal());
