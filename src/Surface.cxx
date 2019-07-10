@@ -193,3 +193,11 @@ gp_Dir OCCUtils::Surface::NormalDirection(const GeomAdaptor_Surface& surf, doubl
     GeomLProp_SLProps props(surf.Surface(), u, v, 1 /* max 1 derivation */, precision);
     return props.Normal();
 }
+
+/**
+ * Sample the point on the given surface at the given U/V coordinates.
+ * The point represents the 0th derivative.
+ */
+gp_Pnt OCCUtils::Surface::PointAt(const GeomAdaptor_Surface& surf, double u, double v) {
+    return surf.Value(u, v);
+}

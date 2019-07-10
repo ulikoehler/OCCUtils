@@ -64,6 +64,24 @@ namespace OCCUtils {
         bool IsSurfaceOfExtrusion(const GeomAdaptor_Surface& surf);
         bool IsOffsetSurface(const GeomAdaptor_Surface& surf);
         bool IsOtherSurface(const GeomAdaptor_Surface& surf);
+
+        /**
+         * Sample the point on the given surface at the given U/V coordinates.
+         * The point represents the 0th derivative.
+         */
+        gp_Pnt PointAt(const GeomAdaptor_Surface& surf, double u = 0.0, double v = 0.0);
+
+        //TODO These are not implemented yet!
+        /**
+         * Sample the slope on the given surface at the given U/V coordinates.
+         * The slope represents the 1st derivative.
+         */
+        //gp_Pnt SlopeAt(const GeomAdaptor_Surface& surf, double u = 0.0, double v = 0.0);
+        /**
+         * Sample the curvature on the given surface at the given U/V coordinates.
+         * The curvature represents the 2nd derivative.
+         */
+        //gp_Pnt CurvatureAt(const GeomAdaptor_Surface& surf, double u = 0.0, double v = 0.0);
     }
     namespace Surfaces {
         struct SurfaceInfo {
