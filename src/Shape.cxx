@@ -1,6 +1,8 @@
 #include "occutils/Shape.hxx"
 #include <GProp_GProps.hxx>
 #include <BRepGProp.hxx>
+#include <BRepBndLib.hxx>
+#include <Bnd_Box.hxx>
 #include <algorithm>
 
 bool OCCUtils::Shape::IsSolid(const TopoDS_Shape &shape) { return shape.ShapeType() == TopAbs_SOLID; }
@@ -34,4 +36,13 @@ std::vector<TopoDS_Shape> OCCUtils::Shapes::FromSolids(const std::vector<TopoDS_
 
 std::vector<TopoDS_Shape> OCCUtils::Shapes::FromFaces(const std::vector<TopoDS_Face>& faces) {
     return _ToShapes(faces);
+}
+
+gp_XYZ OCCUtils::Shape::BoundingBoxSize(const TopoDS_Shape& shape) {
+    Standard_Real xmin, xmax, ymin, ymax, zmin, zmax;
+    Bnd_Box box;
+    BRepBndLib::Add(shape, box);
+    box.Get(xmin, ymin, zmin, xmax, ymax, zmax);
+
+    return gp_XYZ(abs(xmax - xmin), abs(ymax - ymin), abs(zmax - zmin));
 }

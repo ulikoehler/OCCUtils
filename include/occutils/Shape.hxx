@@ -7,6 +7,7 @@
 #include <TopoDS_Face.hxx>
 #include <TopTools_ListOfShape.hxx>
 #include <initializer_list>
+#include <gp_XYZ.hxx>
 #include <vector>
 
 namespace OCCUtils {
@@ -36,6 +37,11 @@ namespace OCCUtils {
          * Compute the volume of the given shape.
          */
         double Volume(const TopoDS_Shape& shape);
+
+        /**
+         * Compute the shape of the bounding box for the given shape
+         */
+        gp_XYZ BoundingBoxSize(const TopoDS_Shape& shape);
     }
 
 
