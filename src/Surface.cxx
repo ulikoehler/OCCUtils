@@ -210,7 +210,7 @@ gp_Pnt OCCUtils::Surface::PointAt(const GeomAdaptor_Surface& surf, const gp_XY& 
     return surf.Value(uv.X(), uv.Y());
 }
 
-vector<gp_XY> OCCUtils::Surface::UniformSampleUVLocations(const GeomAdaptor_Surface& surf, size_t uSamples, size_t vSamples) {
+vector<gp_XY> OCCUtils::Surface::UniformUVSampleLocations(const GeomAdaptor_Surface& surf, size_t uSamples, size_t vSamples) {
     double u0 = surf.FirstUParameter();
     double v0 = surf.FirstVParameter();
     

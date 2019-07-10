@@ -92,7 +92,7 @@ namespace OCCUtils {
          * Umin/Umax and Vmin/Umax are included and represent the first/last sample point.
          * The returned gp_XY coordinates shall be interpreted as U/V coordinates!
          */
-        std::vector<gp_XY> UniformSampleUVLocations(
+        std::vector<gp_XY> UniformUVSampleLocations(
             const GeomAdaptor_Surface& surf, size_t uSamples=10, size_t vSamples=10);
 
         //TODO These are not implemented yet!
