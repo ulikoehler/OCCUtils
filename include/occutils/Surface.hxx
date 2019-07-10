@@ -95,6 +95,15 @@ namespace OCCUtils {
         std::vector<gp_XY> UniformUVSampleLocations(
             const GeomAdaptor_Surface& surf, size_t uSamples=10, size_t vSamples=10);
 
+        /**
+         * Like UniformUVSampleLocations(), but computes sample points within the limits,
+         * not including the U/V limits.
+         * Equivalent to calling UniformUVSampleLocations() with 2 more samples in each direction
+         */
+        std::vector<gp_XY> UniformUVSampleLocationsWithin(
+            const GeomAdaptor_Surface& surf, size_t uSamples=10, size_t vSamples=10);
+
+
         //TODO These are not implemented yet!
         /**
          * Sample the slope on the given surface at the given U/V coordinates.

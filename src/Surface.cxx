@@ -226,3 +226,20 @@ vector<gp_XY> OCCUtils::Surface::UniformUVSampleLocations(const GeomAdaptor_Surf
     }
     return ret;
 }
+
+vector<gp_XY> OCCUtils::Surface::UniformUVSampleLocationsWithin(const GeomAdaptor_Surface& surf, size_t uSamples, size_t vSamples) {
+    double u0 = surf.FirstUParameter();
+    double v0 = surf.FirstVParameter();
+    
+    double uInterval = (surf.LastUParameter() - u0) / (uSamples + 1);
+    double vInterval = (surf.LastVParameter() - v0) / (vSamples + 1);
+
+    vector<gp_XY> ret;
+    ret.reserve(uSamples * vSamples);
+    for (size_t u = 1; u < uSamples; u++) {
+        for (size_t v = 1; v < vSamples; v++) {
+            ret.emplace_back(u0 + uInterval * u, v0 + vInterval * v);
+        }
+    }
+    return ret;
+}
