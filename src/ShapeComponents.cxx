@@ -83,6 +83,20 @@ std::vector<TopoDS_Edge> OCCUtils::ShapeComponents::AllEdgesWithin(const std::ve
     return edges;
 }
 
+std::vector<TopoDS_Edge> OCCUtils::ShapeComponents::AllEdgesWithin(const std::vector<TopoDS_Wire>& shapes) {
+    std::vector<TopoDS_Edge> edges;
+    for(const auto& shape : shapes) {
+        for (TopExp_Explorer edgeExplorer(shape, TopAbs_EDGE); edgeExplorer.More(); edgeExplorer.Next()) {
+            const auto &edge = TopoDS::Edge(edgeExplorer.Current());
+            if (edge.IsNull()) {
+                continue;
+            }
+            edges.push_back(edge);
+        }
+    }
+    return edges;
+}
+
 std::vector<TopoDS_Wire> OCCUtils::ShapeComponents::AllWiresWithin(const TopoDS_Shape& shape) {
     std::vector<TopoDS_Wire> wires;
     for (TopExp_Explorer wireExplorer(shape, TopAbs_WIRE); wireExplorer.More(); wireExplorer.Next()) {

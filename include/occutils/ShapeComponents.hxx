@@ -31,6 +31,7 @@ namespace OCCUtils {
          */
         std::vector<TopoDS_Edge> AllEdgesWithin(const TopoDS_Shape& shape);
         std::vector<TopoDS_Edge> AllEdgesWithin(const std::vector<TopoDS_Shape>& shapes);
+        std::vector<TopoDS_Edge> AllEdgesWithin(const std::vector<TopoDS_Wire>& wires);
         /**
          * Get all wires in a given shape
          * (not including the shape itself, if it is a wire)
