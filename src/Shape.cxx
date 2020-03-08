@@ -46,3 +46,7 @@ gp_XYZ OCCUtils::Shape::BoundingBoxSize(const TopoDS_Shape& shape) {
 
     return gp_XYZ(abs(xmax - xmin), abs(ymax - ymin), abs(zmax - zmin));
 }
+
+double OCCUtils::Shape::BoundingBoxVolume(const TopoDS_Shape& shape) {
+    gp_XYZ bbox = BoundingBoxSize(shape);
+}

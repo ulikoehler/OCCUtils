@@ -42,6 +42,11 @@ namespace OCCUtils {
          * Compute the shape of the bounding box for the given shape
          */
         gp_XYZ BoundingBoxSize(const TopoDS_Shape& shape);
+        
+        /**
+         * Compute the volume of the bounding box of the given shape.
+         */
+        double BoundingBoxVolume(const TopoDS_Shape& shape);
     }
 
 
