@@ -4,6 +4,7 @@
 #include <BRepBndLib.hxx>
 #include <Bnd_Box.hxx>
 #include <algorithm>
+#include <utility>
 
 bool OCCUtils::Shape::IsSolid(const TopoDS_Shape &shape) { return shape.ShapeType() == TopAbs_SOLID; }
 bool OCCUtils::Shape::IsFace(const TopoDS_Shape &shape) { return shape.ShapeType() == TopAbs_FACE; }
@@ -38,6 +39,20 @@ std::vector<TopoDS_Shape> OCCUtils::Shapes::FromFaces(const std::vector<TopoDS_F
     return _ToShapes(faces);
 }
 
+
+std::pair<gp_Vec, gp_Vec> OCCUtils::Shape::BoundingBox(const TopoDS_Shape& shape) {
+
+    Standard_Real xmin, xmax, ymin, ymax, zmin, zmax;
+    Bnd_Box box;
+    BRepBndLib::Add(shape, box);
+    box.Get(xmin, ymin, zmin, xmax, ymax, zmax);
+
+    return std::make_pair(
+        gp_Vec(xmin, ymin, zmin),
+        gp_Vec(xmax, ymax, zmax)
+    );
+}
+
 gp_XYZ OCCUtils::Shape::BoundingBoxSize(const TopoDS_Shape& shape) {
     Standard_Real xmin, xmax, ymin, ymax, zmin, zmax;
     Bnd_Box box;
@@ -49,4 +64,5 @@ gp_XYZ OCCUtils::Shape::BoundingBoxSize(const TopoDS_Shape& shape) {
 
 double OCCUtils::Shape::BoundingBoxVolume(const TopoDS_Shape& shape) {
     gp_XYZ bbox = BoundingBoxSize(shape);
+    return bbox.X() * bbox.Y() * bbox.Z();
 }
