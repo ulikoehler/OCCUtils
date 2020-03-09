@@ -28,6 +28,25 @@ TopoDS_Solid OCCUtils::Primitive::MakeBox(
 
 }
 
+
+TopoDS_Solid OCCUtils::Primitive::MakeBox(const gp_Pnt& a, const gp_Pnt& b) {
+    BRepPrimAPI_MakeBox box(a, b.X() - a.X(), b.Y() - a.Y(), b.Z() - a.Z());
+    box.Build();
+    return box.Solid();
+}
+
+TopoDS_Solid OCCUtils::Primitive::MakeBox(const gp_Vec& a, const gp_Vec& b) {
+    return MakeBox(gp_Pnt(a.X(), a.Y(), a.Z()), gp_Pnt(b.X(), b.Y(), b.Z()));
+}
+
+TopoDS_Solid OCCUtils::Primitive::MakeBox(const std::pair<gp_Pnt, gp_Pnt>& ab) {
+    return MakeBox(ab.first, ab.second);
+}
+
+TopoDS_Solid OCCUtils::Primitive::MakeBox(const std::pair<gp_Vec, gp_Vec>& ab) {
+    return MakeBox(ab.first, ab.second);
+}
+
 TopoDS_Solid OCCUtils::Primitive::MakeCylinder(
     double diameter, double length,
     Orientation orientation,

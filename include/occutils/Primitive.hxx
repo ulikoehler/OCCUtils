@@ -42,6 +42,15 @@ namespace OCCUtils {
             int center=0,
             gp_Pnt origin=gp_Pnt());
 
+        
+        /**
+         * Make a box that stretches from point a to point b.
+         */
+        TopoDS_Solid MakeBox(const gp_Pnt& a, const gp_Pnt& b);
+        TopoDS_Solid MakeBox(const gp_Vec& a, const gp_Vec& b);
+        TopoDS_Solid MakeBox(const std::pair<gp_Pnt, gp_Pnt>& ab);
+        TopoDS_Solid MakeBox(const std::pair<gp_Vec, gp_Vec>& ab);
+
         /**
          * Make a cube that can be centered on all axes individually.
          * @param size The dimension in the X/Y/Z dimensions
