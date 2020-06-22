@@ -68,9 +68,9 @@ double OCCUtils::Axis::Distance(const gp_Ax1& axis, const gp_Pnt& pnt) {
 }
 
 gp_Ax1 operator+(const gp_Ax1& axis, const gp_Vec& vec) {
-    gp_Ax1 ret(axis.Location() + vec, axis.Direction());
+    return gp_Ax1(axis.Location() + vec, axis.Direction());
 }
 
 gp_Ax1 operator+(const gp_Ax1& axis, const gp_XYZ& vec) {
-    gp_Ax1 ret(axis.Location() + vec, axis.Direction());
+    return gp_Ax1(axis.Location() + vec, axis.Direction());
 }
