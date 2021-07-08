@@ -9,8 +9,14 @@ namespace OCCUtils {
     namespace Line {
         
         /**
-         * Find out if lin1 is parallel to lin2
+         * @return true only if lin1 is parallel to lin2
          */
         bool IsNormal(const gp_Lin &lin1, const gp_Lin &lin2, double angularTolerance=1e-6);
+
+
+        /**
+         * @return true if lin1 is parallel to lin2 to within angularTolerance
+         */
+        bool IsParallel(const gp_Lin &lin1, const gp_Lin &lin2, double angularTolerance=1e-6);
     }
 }
