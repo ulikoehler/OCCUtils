@@ -51,6 +51,26 @@ install(TARGETS occutils
 install(DIRECTORY
   "${CMAKE_CURRENT_LIST_DIR}/include/"
   DESTINATION include)
+
+#
+# Compile test suite
+#
+find_package(Boost COMPONENTS system filesystem unit_test_framework REQUIRED)
+
+add_executable(test_occutils
+    tests/TestLine.cpp
+)
+target_include_directories(test_occutils PUBLIC "${CMAKE_CURRENT_LIST_DIR}/include")
+target_compile_options(occutils PRIVATE -Werror)
+target_compile_features(test_occutils PRIVATE cxx_std_17)
+
+target_link_libraries(test_occutils
+                      ${Boost_FILESYSTEM_LIBRARY}
+                      ${Boost_SYSTEM_LIBRARY}
+                      ${Boost_UNIT_TEST_FRAMEWORK_LIBRARY}
+                      )
+add_test(test_occutils test_occutils)
+
 #export (
 #  TARGETS 
 #    occutils
