@@ -39,5 +39,15 @@ namespace OCCUtils {
          * projection of pnt onto axis.
          */
         double Distance(const gp_Pnt& pnt, const gp_Ax1& axis);
+
+        /**
+         * Orthogonally project pnt onto ax
+         */
+        gp_Pnt OrthogonalProjectOnto(const gp_Pnt &pnt, const gp_Ax1 &ax);
+
+        /**
+         * Orthogonally project pnt onto ax
+         */
+        gp_Pnt2d OrthogonalProjectOnto(const gp_Pnt2d &pnt, const gp_Ax2d &ax);
     }
 }
