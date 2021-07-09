@@ -12,6 +12,10 @@ bool OCCUtils::Line::IsParallel(const gp_Lin &lin1, const gp_Lin &lin2, double a
     return lin1.Position().IsParallel(lin2.Position(), angularTolerance);
 }
 
+bool OCCUtils::Line::IsParallel(const gp_Lin2d &lin1, const gp_Lin2d &lin2, double angularTolerance) {   
+    return lin1.Position().IsParallel(lin2.Position(), angularTolerance);
+}
+
 std::optional<gp_Pnt2d> OCCUtils::Line::Intersection(const gp_Lin2d &lin1, const gp_Lin2d &lin2) {
     auto intersector = IntAna2d_AnaIntersection(lin1, lin2);
     if(!intersector.IsDone()) { // Algorithm failure, returned as no intersection
