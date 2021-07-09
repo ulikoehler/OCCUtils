@@ -11,3 +11,4 @@ occutils.cmake
 *.so
 test_occutils
 build
+.vscode
