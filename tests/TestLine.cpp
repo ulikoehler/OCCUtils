@@ -3,6 +3,7 @@
 #include <occutils/Line.hxx>
 #include <occutils/Direction.hxx>
 #include <occutils/PrintOCC.hxx>
+#include <occutils/Equality.hxx>
 
 BOOST_AUTO_TEST_CASE( Line2D )
 {
