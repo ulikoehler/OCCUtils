@@ -65,9 +65,33 @@ target_compile_options(occutils PRIVATE -Werror)
 target_compile_features(test_occutils PRIVATE cxx_std_17)
 
 target_link_libraries(test_occutils
+                      occutils
                       ${Boost_FILESYSTEM_LIBRARY}
                       ${Boost_SYSTEM_LIBRARY}
                       ${Boost_UNIT_TEST_FRAMEWORK_LIBRARY}
+                      TKBO 
+                      TKBRep
+                      TKOffset
+                      TKFeat 
+                      TKFillet
+                      TKXDESTEP
+                      TKG2d 
+                      TKG3d 
+                      TKGeomAlgo 
+                      TKGeomBase 
+                      TKHLR 
+                      TKIGES 
+                      TKOffset 
+                      TKPrim 
+                      TKShHealing 
+                      TKSTEP 
+                      TKSTEP209 
+                      TKSTEPAttr 
+                      TKSTEPBase 
+                      TKXSBase
+                      TKSTL 
+                      TKTopAlgo 
+                      TKV3d
                       )
 add_test(test_occutils test_occutils)
 # make "make test" run the test program

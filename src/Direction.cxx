@@ -29,6 +29,31 @@ gp_Dir OCCUtils::Direction::MinusZ() {
     return gp_Dir(gp_XYZ(0.0, 0.0, -1.0));
 }
 
+/**
+ * Get the global 2D X axis direction
+ */
+gp_Dir2d OCCUtils::Direction::X2d() {
+    return gp_Dir2d(gp_XY(1.0, 0.0));
+}
+/**
+ * Get the global 2D -X axis direction
+ */
+gp_Dir2d OCCUtils::Direction::MinusX2d() {
+    return gp_Dir2d(gp_XY(-1.0, 0.0));
+}
+/**
+ * Get the global 2D Y axis direction
+ */
+gp_Dir2d OCCUtils::Direction::Y2d() {
+    return gp_Dir2d(gp_XY(0.0, 1.0));
+}
+/**
+ * Get the global 2D -Y axis direction
+ */
+gp_Dir2d OCCUtils::Direction::MinusY2d() {
+    return gp_Dir2d(gp_XY(0.0, -1.0));
+}
+
 gp_Dir OCCUtils::Direction::Orthogonal(const gp_Dir& a, const gp_Dir& b) {
     return a.Crossed(b);
 }
