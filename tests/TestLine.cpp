@@ -5,7 +5,7 @@
 #include <occutils/PrintOCC.hxx>
 #include <occutils/Equality.hxx>
 
-BOOST_AUTO_TEST_CASE( Line2D )
+BOOST_AUTO_TEST_CASE( LineIntersection2D )
 {
     // Intersect between a line and itself has infinite points
     gp_Lin2d lin1(gp_Pnt2d(0, 0), OCCUtils::Direction::X2d());
@@ -28,6 +28,4 @@ BOOST_AUTO_TEST_CASE( Line2D )
     result = OCCUtils::Line::Intersection(lin3, lin2);
     BOOST_CHECK(result.has_value());
     BOOST_CHECK_EQUAL(result.value(), gp_Pnt2d(0, 1));
-
-
 }
