@@ -17,8 +17,8 @@ std::optional<gp_Pnt2d> OCCUtils::Line::Intersection(const gp_Lin2d &lin1, const
     if(!intersector.IsDone()) { // Algorithm failure, returned as no intersection
         return std::nullopt;
     }
-    if (intersector.NbPoints() == 0) {
+    if (intersector.NbPoints() == 0 || intersector.NbPoints() > 1) {
         return std::nullopt;
     }
-    return intersector.Point(0).Value();
+    return intersector.Point(1).Value();
 }

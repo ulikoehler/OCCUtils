@@ -96,7 +96,8 @@ target_link_libraries(test_occutils
 add_test(test_occutils test_occutils)
 # make "make test" run the test program
 add_custom_target(test
-     COMMAND ./test_occutils
+    DEPENDS test_occutils
+    COMMAND ./test_occutils
 )
 
 #export (
