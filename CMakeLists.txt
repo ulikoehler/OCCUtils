@@ -70,6 +70,10 @@ target_link_libraries(test_occutils
                       ${Boost_UNIT_TEST_FRAMEWORK_LIBRARY}
                       )
 add_test(test_occutils test_occutils)
+# make "make test" run the test program
+add_custom_target(test
+     COMMAND ./test_myprogram
+)
 
 #export (
 #  TARGETS 
