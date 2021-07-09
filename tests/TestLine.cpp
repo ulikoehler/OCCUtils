@@ -5,6 +5,26 @@
 #include <occutils/PrintOCC.hxx>
 #include <occutils/Equality.hxx>
 
+
+BOOST_AUTO_TEST_CASE( LineParallel2d )
+{
+    // A line should be parallel to itself
+    gp_Lin2d linX(gp_Pnt2d(0, 0), OCCUtils::Direction::X2d());
+    BOOST_CHECK(OCCUtils::Line::IsParallel(linX, linX));
+
+    // A line should be parallel to its reverse line
+    gp_Lin2d linMinusX = linX.Reversed();
+    BOOST_CHECK(OCCUtils::Line::IsParallel(linX, linMinusX));
+    BOOST_CHECK(OCCUtils::Line::IsParallel(linMinusX, linX));
+
+    // Two perpendicular lines should not be parallel
+    gp_Lin2d linY(gp_Pnt2d(0, 0), OCCUtils::Direction::Y2d());
+    BOOST_CHECK(!OCCUtils::Line::IsParallel(linX, linY));
+    BOOST_CHECK(!OCCUtils::Line::IsParallel(linY, linX));
+    BOOST_CHECK(!OCCUtils::Line::IsParallel(linMinusX, linY));
+    BOOST_CHECK(!OCCUtils::Line::IsParallel(linY, linMinusX));
+}
+
 BOOST_AUTO_TEST_CASE( LineIntersection2D )
 {
     // Intersect between a line and itself has infinite points
