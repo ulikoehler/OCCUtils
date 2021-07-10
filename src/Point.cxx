@@ -82,3 +82,12 @@ gp_Pnt2d OCCUtils::Point::OrthogonalProjectOnto(const gp_Pnt2d &pnt, const gp_Ax
     }
     return projector.NearestPoint();
 }
+
+
+gp_Pnt OCCUtils::Point::From2d(const gp_Pnt2d& pnt) {
+    return gp_Pnt(pnt.X(), pnt.Y(), 0.0);
+}
+
+gp_Pnt OCCUtils::Point::From2d(double x, double y) {
+    return gp_Pnt(x, y, 0.0);
+}

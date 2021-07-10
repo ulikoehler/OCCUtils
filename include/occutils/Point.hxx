@@ -28,6 +28,13 @@ namespace OCCUtils {
         gp_Pnt Origin();
 
         /**
+         * Generate a 3D point from a 2D point
+         * by setting the Z coordinate to 0.0
+         */
+        gp_Pnt From2d(const gp_Pnt2d& pnt);
+        gp_Pnt From2d(double x, double y);
+
+        /**
          * Get the point of mean X/Y/Z between the given points
          */
         gp_Pnt Midpoint(const std::initializer_list<gp_Pnt>& points);
