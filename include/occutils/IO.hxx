@@ -33,6 +33,12 @@ namespace OCCUtils {
              * Like STEPorIGESReader(), but ignores the filename and always uses a IGESControl_Reader reader.
              */
             std::shared_ptr<XSControl_Reader> IGESReader();
+
+            /**
+             * Make the given XSControl_Reader read the given file.
+             * @throws OCCIOException in case of read (could not determine filename)
+             */
+            void ReadFile(const std::shared_ptr<XSControl_Reader>& reader, const std::string& filename);
         }
     }
 }

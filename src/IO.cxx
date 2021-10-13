@@ -29,3 +29,24 @@ std::shared_ptr<XSControl_Reader> OCCUtils::IO::Reader::STEPReader() {
 std::shared_ptr<XSControl_Reader> OCCUtils::IO::Reader::IGESReader() {
     return shared_ptr<XSControl_Reader>(dynamic_cast<XSControl_Reader*>(new IGESControl_Reader()));
 }
+
+/**
+ * Convert a IFSelect_ReturnStatus code to string
+ */
+static std::string _IFSelectReturnStatusToString(IFSelect_ReturnStatus code) {
+    switch (code) {
+    case IFSelect_RetVoid: return "Void";
+    case IFSelect_RetDone: return "Done";
+    case IFSelect_RetError: return "Error";
+    case IFSelect_RetFail: return "Fail";
+    case IFSelect_RetStop: return "Stop";
+    default: return "Unknown";
+    }
+}
+
+void OCCUtils::IO::Reader::ReadFile(const std::shared_ptr<XSControl_Reader>& reader, const std::string& filename) {
+    auto readStat = reader->ReadFile(filename.c_str());
+    if (readStat != IFSelect_ReturnStatus::IFSelect_RetDone) {
+        throw OCCIOException("Failed to read file, error code:" + _IFSelectReturnStatusToString(readStat));
+    }
+}
