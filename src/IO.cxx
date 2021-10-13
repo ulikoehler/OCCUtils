@@ -7,7 +7,7 @@
 using namespace std;
 using namespace boost::algorithm;
 
-shared_ptr<XSControl_Reader> OCCUtils::IO::STEPorIGESReader(const std::string& filename) {
+shared_ptr<XSControl_Reader> OCCUtils::IO::Reader::STEPorIGESReader(const std::string& filename) {
     shared_ptr<XSControl_Reader> reader;
     // Automatically determine filename
     string lowercaseFilename = to_lower_copy(stepFilename);
@@ -21,10 +21,10 @@ shared_ptr<XSControl_Reader> OCCUtils::IO::STEPorIGESReader(const std::string& f
     return reader;
 }
 
-std::shared_ptr<XSControl_Reader> OCCUtils::IO::STEPReader() {
+std::shared_ptr<XSControl_Reader> OCCUtils::IO::Reader::STEPReader() {
     return shared_ptr<XSControl_Reader>(dynamic_cast<XSControl_Reader*>(new STEPControl_Reader()));
 }
 
-std::shared_ptr<XSControl_Reader> OCCUtils::IO::IGESReader() {
+std::shared_ptr<XSControl_Reader> OCCUtils::IO::Reader::IGESReader() {
     return shared_ptr<XSControl_Reader>(dynamic_cast<XSControl_Reader*>(new IGESControl_Reader()));
 }
