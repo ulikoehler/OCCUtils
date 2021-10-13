@@ -286,3 +286,19 @@ TopoDS_Vertex OCCUtils::ShapeComponents::GetSingleVertex (const TopoDS_Shape& sh
     }
     return opt.value();
 }
+
+size_t OCCUtils::ShapeComponents::CountX(const TopoDS_Shape& shape, TopAbs_ShapeEnum type) {
+    size_t cnt = 0;
+    for (TopExp_Explorer xExplorer(shape, type); xExplorer.More(); xExplorer.Next()) {
+        cnt += xExplorer.Current().ShapeType() == type ? 1 : 0;
+    }
+    return cnt;
+}
+
+size_t OCCUtils::ShapeComponents::CountX(const std::vector<TopoDS_Shape>& shapes, TopAbs_ShapeEnum type) {
+    size_t cnt = 0;
+    for(const auto& shape: shapes) {
+        cnt += CountX(shape, type);
+    }
+    return cnt;
+}

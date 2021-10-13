@@ -13,6 +13,17 @@
 
 namespace OCCUtils {
     namespace ShapeComponents {
+
+        /**
+         * Iterate over all components of shape and count how many
+         * sub-shapes of type [type] it contains.
+         * 
+         * NOTE: shape itself will NOT count, even if it is of type [type]
+         */
+        size_t CountX(const TopoDS_Shape& shape, TopAbs_ShapeEnum type);
+        size_t CountX(const std::vector<TopoDS_Shape>& shapes, TopAbs_ShapeEnum type);
+        size_t CountSolids(const TopoDS_Shape& shape, TopAbs_ShapeEnum type);
+
         /**
          * Get all solids in a given shape
          * (not including the shape itself, if it is a solid)
