@@ -68,67 +68,97 @@ namespace OCCUtils {
          * If [shape] is a solid, return shape.
          * Else, if there is a single solid within [shape],
          * returns that solid. Else, returns no value.
+         * 
+         * If there are multiple solids within shape:
+         *  - if [firstOfMultipleOK] == true => get first of these solids
+         *  - if [firstOfMultipleOK] == false => return std::nullopt
          */
-        std::optional<TopoDS_Solid> TryGetSingleSolid (const TopoDS_Shape& shape);
+        std::optional<TopoDS_Solid> TryGetSingleSolid (const TopoDS_Shape& shape, bool firstOfMultipleOK=true);
         /**
          * If [shape] is a face, return shape.
          * Else, if there is a single face within [shape],
          * returns that face. Else, returns no value.
+         * 
+         * If there are multiple faces within shape:
+         *  - if [firstOfMultipleOK] == true => get first of these faces
+         *  - if [firstOfMultipleOK] == false => return std::nullopt
          */
-        std::optional<TopoDS_Face> TryGetSingleFace (const TopoDS_Shape& shape);
+        std::optional<TopoDS_Face> TryGetSingleFace (const TopoDS_Shape& shape, bool firstOfMultipleOK=true);
         /**
          * If [shape] is a edge, return shape.
          * Else, if there is a single edge within [shape],
          * returns that edge. Else, returns no value.
+         * 
+         * If there are multiple edges within shape:
+         *  - if [firstOfMultipleOK] == true => get first of these edges
+         *  - if [firstOfMultipleOK] == false => return std::nullopt
          */
-        std::optional<TopoDS_Edge> TryGetSingleEdge (const TopoDS_Shape& shape);
+        std::optional<TopoDS_Edge> TryGetSingleEdge (const TopoDS_Shape& shape, bool firstOfMultipleOK=true);
         /**
          * If [shape] is a edge, return shape.
          * Else, if there is a single edge within [shape],
          * returns that edge. Else, returns no value.
+         * 
+         * If there are multiple wires within shape:
+         *  - if [firstOfMultipleOK] == true => get first of these wires
+         *  - if [firstOfMultipleOK] == false => return std::nullopt
          */
-        std::optional<TopoDS_Wire> TryGetSingleWire (const TopoDS_Shape& shape);
+        std::optional<TopoDS_Wire> TryGetSingleWire (const TopoDS_Shape& shape, bool firstOfMultipleOK=true);
         /**
          * If [shape] is a vertex, return shape.
          * Else, if there is a single vertex within [shape],
          * returns that vertex. Else, returns no value.
+         * 
+         * If there are multiple vertices within shape:
+         *  - if [firstOfMultipleOK] == true => get first of these vertices
+         *  - if [firstOfMultipleOK] == false => return std::nullopt
          */
-        std::optional<TopoDS_Vertex> TryGetSingleVertex (const TopoDS_Shape& shape);
+        std::optional<TopoDS_Vertex> TryGetSingleVertex (const TopoDS_Shape& shape, bool firstOfMultipleOK=true);
         
         /**
          * If [shape] is a solid, return shape.
          * Else, expects there to be a single solid within [shape].
-         * If there are zero or 2+ solids within [shape], throws
-         * OCCTopologyCountMismatchException().
+         * If there are zero solids within [shape], throws OCCTopologyCountMismatchException().
+         * If there are 2+ solids within [shape]:
+         *  - if [firstOfMultipleOK] == true => get first shape
+         *  - if [firstOfMultipleOK] == false => throws OCCTopologyCountMismatchException().
          */
-        TopoDS_Solid GetSingleSolid (const TopoDS_Shape& shape);
+        TopoDS_Solid GetSingleSolid (const TopoDS_Shape& shape, bool firstOfMultipleOK=true);
         /**
          * If [shape] is a face, return shape.
          * Else, expects there to be a single face within [shape].
-         * If there are zero or 2+ faces within [shape], throws
-         * OCCTopologyCountMismatchException().
+         * If there are zero faces within [shape], throws OCCTopologyCountMismatchException().
+         * If there are 2+ faces within [shape]:
+         *  - if [firstOfMultipleOK] == true => get first shape
+         *  - if [firstOfMultipleOK] == false => throws OCCTopologyCountMismatchException().
          */
-        TopoDS_Face GetSingleFace (const TopoDS_Shape& shape);
+        TopoDS_Face GetSingleFace (const TopoDS_Shape& shape, bool firstOfMultipleOK=true);
         /**
          * If [shape] is an edge, return shape.
          * Else, expects there to be a single edge within [shape].
-         * If there are zero or 2+ edges within [shape], throws
-         * OCCTopologyCountMismatchException().
+         * If there are zero edges within [shape], throws OCCTopologyCountMismatchException().
+         * If there are 2+ edges within [shape]:
+         *  - if [firstOfMultipleOK] == true => get first shape
+         *  - if [firstOfMultipleOK] == false => throws OCCTopologyCountMismatchException().
          */
-        TopoDS_Edge GetSingleEdge (const TopoDS_Shape& shape);
+        TopoDS_Edge GetSingleEdge (const TopoDS_Shape& shape, bool firstOfMultipleOK=true);
         /**
          * If [shape] is a wire, return shape.
          * Else, expects there to be a single wire within [shape].
-         * If there are zero or 2+ wires within [shape], throws
-         * OCCTopologyCountMismatchException().
+         * If there are zero wires within [shape], throws OCCTopologyCountMismatchException().
+         * If there are 2+ wires within [shape]:
+         *  - if [firstOfMultipleOK] == true => get first shape
+         *  - if [firstOfMultipleOK] == false => throws OCCTopologyCountMismatchException().
          */
-        TopoDS_Wire GetSingleWire (const TopoDS_Shape& shape);
+        TopoDS_Wire GetSingleWire (const TopoDS_Shape& shape, bool firstOfMultipleOK=true);
         /**
          * If [shape] is an vertex, return shape.
          * Else, expects there to be a single vertex within [shape].
-         * If there are zero or 2+ vertices within [shape], throws
-         * OCCTopologyCountMismatchException().
+         * If there are zero vertices within [shape], throws OCCTopologyCountMismatchException().
+         * If there are 2+ vertices within [shape]:
+         *  - if [firstOfMultipleOK] == true => get first shape
+         *  - if [firstOfMultipleOK] == false => throws OCCTopologyCountMismatchException().
          */
-        TopoDS_Vertex GetSingleVertex (const TopoDS_Shape& shape);
+        TopoDS_Vertex GetSingleVertex (const TopoDS_Shape& shape, bool firstOfMultipleOK=true);
     }
 }

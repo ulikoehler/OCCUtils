@@ -177,110 +177,120 @@ std::vector<gp_Pnt> OCCUtils::ShapeComponents::AllVertexCoordinatesWithin(const 
 
 }
 
-std::optional<TopoDS_Solid> OCCUtils::ShapeComponents::TryGetSingleSolid (const TopoDS_Shape& shape) {
+std::optional<TopoDS_Solid> OCCUtils::ShapeComponents::TryGetSingleSolid (const TopoDS_Shape& shape, bool firstOfMultipleOK) {
     // Is shape itself a solid?
     if(shape.ShapeType() == TopAbs_SOLID) {
         return TopoDS::Solid(shape);
     }
     // Else, expect there to be ONE sub-solid
     auto solids = ShapeComponents::AllSolidsWithin(shape);
-    if(solids.empty() || solids.size() > 1) {
+    if(solids.empty()) {
         return std::nullopt;
-    } else {
-        return solids[0];
     }
+    if(solids.size() > 1 && !firstOfMultipleOK) {
+        return std::nullopt;
+    }
+    return solids[0];
 }
 
-std::optional<TopoDS_Face> OCCUtils::ShapeComponents::TryGetSingleFace (const TopoDS_Shape& shape) {
+std::optional<TopoDS_Face> OCCUtils::ShapeComponents::TryGetSingleFace (const TopoDS_Shape& shape, bool firstOfMultipleOK) {
     // Is shape itself a solid?
     if(shape.ShapeType() == TopAbs_FACE) {
         return TopoDS::Face(shape);
     }
     // Else, expect there to be ONE sub-face
     auto faces = ShapeComponents::AllFacesWithin(shape);
-    if(faces.empty() || faces.size() > 1) {
+    if(faces.empty()) {
         return std::nullopt;
-    } else {
-        return faces[0];
     }
+    if(faces.size() > 1 && !firstOfMultipleOK) {
+        return std::nullopt;
+    }
+    return faces[0];
 }
 
-std::optional<TopoDS_Edge> OCCUtils::ShapeComponents::TryGetSingleEdge (const TopoDS_Shape& shape) {
+std::optional<TopoDS_Edge> OCCUtils::ShapeComponents::TryGetSingleEdge (const TopoDS_Shape& shape, bool firstOfMultipleOK) {
     // Is shape itself an edge?
     if(shape.ShapeType() == TopAbs_EDGE) {
         return TopoDS::Edge(shape);
     }
     // Else, expect there to be ONE sub-edge
     auto edges = ShapeComponents::AllEdgesWithin(shape);
-    if(edges.empty() || edges.size() > 1) {
+    if(edges.empty()) {
         return std::nullopt;
-    } else {
-        return edges[0];
     }
+    if(edges.size() > 1 && !firstOfMultipleOK) {
+        return std::nullopt;
+    }
+    return edges[0];
 }
 
-std::optional<TopoDS_Wire> OCCUtils::ShapeComponents::TryGetSingleWire (const TopoDS_Shape& shape) {
+std::optional<TopoDS_Wire> OCCUtils::ShapeComponents::TryGetSingleWire (const TopoDS_Shape& shape, bool firstOfMultipleOK) {
     // Is shape itself a solid?
     if(shape.ShapeType() == TopAbs_WIRE) {
         return TopoDS::Wire(shape);
     }
     // Else, expect there to be ONE sub-wire
     auto wires = ShapeComponents::AllWiresWithin(shape);
-    if(wires.empty() || wires.size() > 1) {
+    if(wires.empty()) {
         return std::nullopt;
-    } else {
-        return wires[0];
     }
+    if(wires.size() > 1 && !firstOfMultipleOK) {
+        return std::nullopt;
+    }
+    return wires[0];
 }
 
-std::optional<TopoDS_Vertex> OCCUtils::ShapeComponents::TryGetSingleVertex (const TopoDS_Shape& shape) {
+std::optional<TopoDS_Vertex> OCCUtils::ShapeComponents::TryGetSingleVertex (const TopoDS_Shape& shape, bool firstOfMultipleOK) {
     // Is shape itself a solid?
     if(shape.ShapeType() == TopAbs_VERTEX) {
         return TopoDS::Vertex(shape);
     }
     // Else, expect there to be ONE sub-vertex
     auto vertices = ShapeComponents::AllVerticesWithin(shape);
-    if(vertices.empty() || vertices.size() > 1) {
+    if(vertices.empty()) {
         return std::nullopt;
-    } else {
-        return vertices[0];
     }
+    if(vertices.size() > 1 && !firstOfMultipleOK) {
+        return std::nullopt;
+    }
+    return vertices[0];
 }
 
-TopoDS_Solid OCCUtils::ShapeComponents::GetSingleSolid (const TopoDS_Shape& shape) {
-    auto opt = TryGetSingleSolid(shape);
+TopoDS_Solid OCCUtils::ShapeComponents::GetSingleSolid (const TopoDS_Shape& shape, bool firstOfMultipleOK) {
+    auto opt = TryGetSingleSolid(shape, firstOfMultipleOK);
     if(!opt.has_value()) {
         throw new OCCTopologyCountMismatchException("Shape is not a solid and does not contain a single solid");
     }
     return opt.value();
 }
 
-TopoDS_Face OCCUtils::ShapeComponents::GetSingleFace (const TopoDS_Shape& shape) {
-    auto opt = TryGetSingleFace(shape);
+TopoDS_Face OCCUtils::ShapeComponents::GetSingleFace (const TopoDS_Shape& shape, bool firstOfMultipleOK) {
+    auto opt = TryGetSingleFace(shape, firstOfMultipleOK);
     if(!opt.has_value()) {
         throw new OCCTopologyCountMismatchException("Shape is not a face and does not contain a single face");
     }
     return opt.value();
 }
 
-TopoDS_Edge OCCUtils::ShapeComponents::GetSingleEdge (const TopoDS_Shape& shape) {
-    auto opt = TryGetSingleEdge(shape);
+TopoDS_Edge OCCUtils::ShapeComponents::GetSingleEdge (const TopoDS_Shape& shape, bool firstOfMultipleOK) {
+    auto opt = TryGetSingleEdge(shape, firstOfMultipleOK);
     if(!opt.has_value()) {
         throw new OCCTopologyCountMismatchException("Shape is not a edge and does not contain a single edge");
     }
     return opt.value();
 }
 
-TopoDS_Wire OCCUtils::ShapeComponents::GetSingleWire (const TopoDS_Shape& shape) {
-    auto opt = TryGetSingleWire(shape);
+TopoDS_Wire OCCUtils::ShapeComponents::GetSingleWire (const TopoDS_Shape& shape, bool firstOfMultipleOK) {
+    auto opt = TryGetSingleWire(shape, firstOfMultipleOK);
     if(!opt.has_value()) {
         throw new OCCTopologyCountMismatchException("Shape is not a wire and does not contain a single wire");
     }
     return opt.value();
 }
 
-TopoDS_Vertex OCCUtils::ShapeComponents::GetSingleVertex (const TopoDS_Shape& shape) {
-    auto opt = TryGetSingleVertex(shape);
+TopoDS_Vertex OCCUtils::ShapeComponents::GetSingleVertex (const TopoDS_Shape& shape, bool firstOfMultipleOK) {
+    auto opt = TryGetSingleVertex(shape, firstOfMultipleOK);
     if(!opt.has_value()) {
         throw new OCCTopologyCountMismatchException("Shape is not a vertex and does not contain a single vertex");
     }
