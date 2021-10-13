@@ -50,3 +50,22 @@ void OCCUtils::IO::Reader::ReadFile(const std::shared_ptr<XSControl_Reader>& rea
         throw OCCIOException("Failed to read file, error code:" + _IFSelectReturnStatusToString(readStat));
     }
 }
+
+TopoDS_Shape OCCUtils::IO::Reader::ReadOneShape(const std::shared_ptr<XSControl_Reader>& reader) {
+    // Check if there is anything to convert
+    auto numroots = reader->NbRootsForTransfer();
+    if (numroots < 1) {
+        throw OCCIOException("Failed to read file: No roots to transfer are present");
+    }
+    // Convert STEP to shape
+    if (reader->TransferRoots() < 1) {
+        throw OCCIOException("Failed to read file: Failed to transfer any roots");
+    }
+    return reader->OneShape();
+}
+
+TopoDS_Shape OCCUtils::IO::Read(const std::string& filename) {
+    auto reader = IO::Reader::STEPorIGESReader(filename);
+    IO::Reader::ReadFile(reader, filename);
+    return IO::Reader::ReadOneShape(reader);
+}
