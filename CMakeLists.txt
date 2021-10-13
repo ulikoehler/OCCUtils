@@ -11,6 +11,7 @@ add_library(occutils SHARED
     src/Shape.cxx
     src/Plane.cxx
     src/Pipe.cxx
+    src/IO.cxx
     src/Curve.cxx
     src/STEPExport.cxx
     src/Primitive.cxx
