@@ -18,6 +18,14 @@ struct OCCConstructionFailedException : OCCUtilsBaseException {
 };
 
 /**
+ * Exception occuring related to IO of data
+ */
+struct OCCIOException : OCCUtilsBaseException {
+    OCCIOException(const char *msg) : OCCUtilsBaseException(msg) {}
+    OCCIOException(const std::string &msg) : OCCUtilsBaseException(msg) {}
+};
+
+/**
  * Baseclass for exceptions that directly relate to the
  * BRep topology.
  */
