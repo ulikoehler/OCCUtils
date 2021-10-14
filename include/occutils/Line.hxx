@@ -11,7 +11,7 @@ namespace OCCUtils {
     namespace Line {
         
         /**
-         * @return true only if lin1 is parallel to lin2
+         * @return true only if lin1 is normal to lin2 within angularTolerance
          */
         bool IsNormal(const gp_Lin &lin1, const gp_Lin &lin2, double angularTolerance=1e-6);
 
