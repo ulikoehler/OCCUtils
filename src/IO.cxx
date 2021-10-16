@@ -47,7 +47,7 @@ static std::string _IFSelectReturnStatusToString(IFSelect_ReturnStatus code) {
 void OCCUtils::IO::Reader::ReadFile(const std::shared_ptr<XSControl_Reader>& reader, const std::string& filename) {
     auto readStat = reader->ReadFile(filename.c_str());
     if (readStat != IFSelect_ReturnStatus::IFSelect_RetDone) {
-        throw OCCIOException("Failed to read file, error code:" + _IFSelectReturnStatusToString(readStat));
+        throw OCCIOException("Failed to read file, error code: " + _IFSelectReturnStatusToString(readStat));
     }
 }
 
