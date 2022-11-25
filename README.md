@@ -98,6 +98,7 @@ On my [blog](https://techoverflow.net) I provide examples of specific usecases f
 * [How to iterate all edges in TopoDS_Face using OpenCASCADE](https://techoverflow.net/2019/06/13/how-to-iterate-all-edges-in-topods_face-using-opencascade/)
 * [How to export STEP file in OpenCASCADE](https://techoverflow.net/2019/06/13/how-to-export-step-file-in-opencascade/)
 * [How to fuse TopoDS_Shapes in OpenCASCADE (boolean AND)](https://techoverflow.net/2019/06/14/how-to-fuse-topods_shapes-in-opencascade-boolean-and/)
+* [How to cut shapes using OCCUtils for OpenCascade (boolean difference)](https://techoverflow.net/2022/11/25/how-to-cut-shapes-using-occutils-for-opencascade-boolean-difference/)
 * [How to export colored STEP files in OpenCASCADE](https://techoverflow.net/2019/06/14/how-to-export-colored-step-files-in-opencascade/)
 * [Overview of all standard colors available in OpenCASCADE](https://techoverflow.net/2019/06/14/overview-of-all-standard-colors-available-in-opencascade/)
 * [How to check if two gp_Pnt coincide in OpenCASCADE](https://techoverflow.net/2019/06/15/how-to-check-if-two-gp_pnt-coincide-in-opencascade/)
