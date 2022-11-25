@@ -85,7 +85,10 @@ replacing `my_target` with the name of your build target (i.e. the first argumen
 
 ## How to use
 
-On my [blog](https://techoverflow.net) I provide examples of specific usecases for OpenCASCADE, including how to use the relevant OCCUtils functions:
+On my [blog](https://techoverflow.net) I provide examples of specific usecases for OpenCASCADE, including the following full examples:
+* [OCCUtils full example: Make box and export it to STEP](https://techoverflow.net/2022/11/25/occutils-full-example-make-box-and-export-it-to-step/)
+
+... and examples of how to use the specific OCCUtils functions:
 
 * [How to compute surface area of TopoDS_Face in OpenCASCADE](https://techoverflow.net/2019/06/13/how-to-compute-surface-area-of-topods_face-in-opencascade/)
 * [How to create a Cylinder TopoDS_Solid in OpenCASCADE](https://techoverflow.net/2019/06/13/how-to-create-a-cylinder-topods_solid-in-opencascade/)
